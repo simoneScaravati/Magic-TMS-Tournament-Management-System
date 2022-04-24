@@ -1,59 +1,18 @@
 import sys
+from player import *
+from table import *
+from game import *
 
-class Player():
 
-    def __init__( self, name, score = 0 ):
-        self.name = name                        # string for player name       
-        self.score = score    # numbers of total rounds per game    
-    
-
-class Table():
-
-    def __init__(self, players= [], id='table'):
-        self.players_list = players     # players must be a list of Player objects
-        self.id = id
-    
-    def __str__(self):
-        print(f"Id: {self.id}")
-        print(f"Number of Players: {len(self.players_list)}")
-        print(f"Players: {self.players_list}")
-        return ""
-    
-class Game():
-    
-    def __init__(self, number_of_total_rounds = 3, a = 1 ):
-        self.table_list = []            # initialize list of Tables objects
-        self.total_players = []         # initialize total player numbers   
-        self.number_of_total_rounds = number_of_total_rounds # numbers of total rounds per game
-        self.actual_round = a           # actual round of the game (?) 
-    
-    def add_table(self, table):
-        self.table_list.append(table)
-        
-    def remove_table(self, table):
-        self.table_list.remove(table)
-
-    # print object override
-    def __str__(self):
-        print("Game stats: ")
-        print(f"Total of tables: {len(self.table_list)}")
-        for i in range(len(self.table_list)):
-            print(self.table_list[i])
-        print(f"Actual round: {self.actual_round}")
-        print(f"total players: {self.total_players}")
-        print(f"total rounds: {self.number_of_total_rounds}") 
-        return ""
-        
-def print_commands():
-
-    commands_list = {'help': 'print command list',
+commands_list_g = {'help': 'print command list',
                     'g': 'print Game actual state', 
                     'add table': 'add a table',
                     't': 'print actual tables status',
                     'add player': 'add player', 
                     'p': 'print player list',
 
-                    }
+                    }   
+def print_commands(commands_list):
 
     print("possible commands: ")
     for k, v in commands_list.items():
@@ -70,7 +29,7 @@ def add_table():
 # def process_command(command, arg):
 #     dispatch[command](arg)
 
-def process_command(command):
+def process_command(command,):
     dispatch = {
         'add player': add_player,
         'add table': add_table,
@@ -101,7 +60,7 @@ if __name__ == "__main__":
         else: 
             print("please insert a number")
 
-    game = Game(number_of_total_rounds= int(n))
+    game = Game(number_of_total_rounds= int(n)) #new game
     
     if(t > 0):
         for i in range(t):
