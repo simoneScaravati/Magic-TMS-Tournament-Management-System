@@ -9,9 +9,9 @@ namespace Magic_Tournamente_Tables_Management_System
     internal class Player
     {
         private String _name;
-        private String _score;
+        private int _score;
 
-        public Player(string name, string score)
+        public Player(string name, int score)
         {
             _name = name;
             _score = score;

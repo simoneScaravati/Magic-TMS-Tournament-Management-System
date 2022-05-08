@@ -10,10 +10,10 @@ namespace Magic_Tournamente_Tables_Management_System
 {
     internal class Game
     {
-        private int total_rounds;
-        private int current_round;
-        private List<Table> table_list;
-        private List<Player> player_list;
+        public int total_rounds;
+        public int current_round;
+        public List<Table> table_list;
+        public List<Player> player_list;
 
         public Game(int total_rounds)
         {
