@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Magic Tournamente Tables Management System/1.0.0": {
+        "runtime": {
+          "Magic Tournamente Tables Management System.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Magic Tournamente Tables Management System/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

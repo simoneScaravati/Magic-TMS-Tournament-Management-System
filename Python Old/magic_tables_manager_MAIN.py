@@ -12,10 +12,11 @@ commands_list_g = {'help': 'print command list',
                     'p': 'print player list',
 
                     }   
-def print_commands(commands_list):
+def print_commands():
+    global commands_list_g
 
     print("possible commands: ")
-    for k, v in commands_list.items():
+    for k, v in commands_list_g.items():
         print(f"\t{k}: {v} ")
 
 def add_player():
@@ -64,10 +65,11 @@ if __name__ == "__main__":
     
     if(t > 0):
         for i in range(t):
-            game.table_list.append(Table())
+            game.table_list.append(Table(id=f"table{i+1}"))
     
     print(game)
-   
+    print_commands()
+
     while(True):
         # print_commands()
         c = input("Insert command >> ")
