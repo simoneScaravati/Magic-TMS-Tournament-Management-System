@@ -8,7 +8,7 @@ using static Magic_Tournamente_Tables_Management_System.Table;
 
 namespace Magic_Tournamente_Tables_Management_System
 {
-    internal class Game
+    public class Game
     {
         public int total_rounds;
         public int current_round;

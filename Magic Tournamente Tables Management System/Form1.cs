@@ -73,5 +73,24 @@ namespace Magic_Tournamente_Tables_Management_System
         {
 
         }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormNewGame newGame = new FormNewGame(this.game);
+            DialogResult res = newGame.ShowDialog();  //wait for start execution
+
+            if (res == DialogResult.OK)
+            {
+                this.game.current_round = 1;
+            }else
+            {
+                this.game.current_round = 0;
+            }
+
+            labelCurrentRound.Text = this.game.current_round.ToString() + " / " + this.game.total_rounds.ToString();
+
+            //this.game.total_rounds = newGame.form2game.total_rounds; //already executed from 
+
+        }
     }
 }

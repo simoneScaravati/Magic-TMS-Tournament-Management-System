@@ -16,3 +16,4 @@ D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Mana
 D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic Tournamente Tables Management System.pdb
 D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic Tournamente Tables Management System.genruntimeconfig.cache
 D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\ref\Magic Tournamente Tables Management System.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic_Tournamente_Tables_Management_System.FormNewGame.resources

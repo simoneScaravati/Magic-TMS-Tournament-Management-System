@@ -198,7 +198,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(329, 560);
+            this.textBox1.Location = new System.Drawing.Point(329, 551);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "(default TableXXX)";
             this.textBox1.Size = new System.Drawing.Size(164, 25);
@@ -206,7 +206,7 @@
             // 
             // buttonAddTable
             // 
-            this.buttonAddTable.Location = new System.Drawing.Point(329, 519);
+            this.buttonAddTable.Location = new System.Drawing.Point(329, 502);
             this.buttonAddTable.Name = "buttonAddTable";
             this.buttonAddTable.Size = new System.Drawing.Size(162, 35);
             this.buttonAddTable.TabIndex = 9;
@@ -215,7 +215,7 @@
             // 
             // buttonEditPlayer
             // 
-            this.buttonEditPlayer.Location = new System.Drawing.Point(13, 582);
+            this.buttonEditPlayer.Location = new System.Drawing.Point(12, 582);
             this.buttonEditPlayer.Name = "buttonEditPlayer";
             this.buttonEditPlayer.Size = new System.Drawing.Size(162, 35);
             this.buttonEditPlayer.TabIndex = 12;
@@ -224,7 +224,7 @@
             // 
             // buttonEditTable
             // 
-            this.buttonEditTable.Location = new System.Drawing.Point(329, 591);
+            this.buttonEditTable.Location = new System.Drawing.Point(329, 582);
             this.buttonEditTable.Name = "buttonEditTable";
             this.buttonEditTable.Size = new System.Drawing.Size(162, 35);
             this.buttonEditTable.TabIndex = 13;
@@ -344,20 +344,21 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // saveTODOToolStripMenuItem
             // 
             this.saveTODOToolStripMenuItem.Name = "saveTODOToolStripMenuItem";
-            this.saveTODOToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.saveTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveTODOToolStripMenuItem.Text = "Save Game (TODO)";
             this.saveTODOToolStripMenuItem.Click += new System.EventHandler(this.saveTODOToolStripMenuItem_Click);
             // 
             // openGameTODOToolStripMenuItem
             // 
             this.openGameTODOToolStripMenuItem.Name = "openGameTODOToolStripMenuItem";
-            this.openGameTODOToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.openGameTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openGameTODOToolStripMenuItem.Text = "Open Game (TODO)";
             // 
             // infoToolStripMenuItem

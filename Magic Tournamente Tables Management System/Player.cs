@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Magic_Tournamente_Tables_Management_System
 {
-    internal class Player
+    public class Player
     {
         private String _name;
         private int _score;

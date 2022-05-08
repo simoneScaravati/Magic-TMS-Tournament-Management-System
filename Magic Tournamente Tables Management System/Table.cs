@@ -7,7 +7,7 @@ using static Magic_Tournamente_Tables_Management_System.Player;
 
 namespace Magic_Tournamente_Tables_Management_System
 {
-    internal class Table
+    public class Table
     {
         private String id;
         private List<Player> players;
