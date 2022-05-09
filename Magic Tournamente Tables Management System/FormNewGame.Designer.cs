@@ -125,6 +125,7 @@
             this.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormNewGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Game";
             this.Load += new System.EventHandler(this.FormNewGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRounds)).EndInit();

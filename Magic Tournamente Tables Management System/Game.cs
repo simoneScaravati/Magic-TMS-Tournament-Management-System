@@ -12,6 +12,7 @@ namespace Magic_Tournamente_Tables_Management_System
     {
         public int total_rounds;
         public int current_round;
+        public bool game_started;
         public List<Table> table_list;
         public List<Player> player_list;
 
@@ -19,6 +20,7 @@ namespace Magic_Tournamente_Tables_Management_System
         {
             this.total_rounds = total_rounds;
             this.current_round = 0;
+            this.game_started = false;
             this.table_list = new List<Table>();
             this.player_list = new List<Player>();
 

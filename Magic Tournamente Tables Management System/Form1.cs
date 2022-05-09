@@ -35,6 +35,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
             if (temp != "")
             {
+                textBoxAddPlayer.Text = "";
                 listBoxPlayers.Items.Add(temp);
                 this.game.player_list.Add(new Player(temp, 0));
             }else
@@ -43,10 +44,7 @@ namespace Magic_Tournamente_Tables_Management_System
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonRemovePlayer_Click(object sender, EventArgs e)
         {
@@ -54,14 +52,26 @@ namespace Magic_Tournamente_Tables_Management_System
             listBoxPlayers.Refresh();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void buttonAddTable_Click(object sender, EventArgs e)
         {
+            String temp = textBoxAddTable.Text;
 
+            if (temp != "")
+            {
+                textBoxAddTable.Text = "";
+                listBoxTables.Items.Add(temp);
+                this.game.table_list.Add(new Table(temp));
+            }
+            else
+            {
+                MessageBox.Show("Table box empty");
+            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void buttonRemoveTable_Click(object sender, EventArgs e)
         {
-
+            listBoxTables.Items.Remove(listBoxTables.SelectedItem);
+            listBoxTables.Refresh();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -76,12 +86,13 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormNewGame newGame = new FormNewGame(this.game);
+            FormNewGame newGame = new FormNewGame(this.game); //set total_rounds here
             DialogResult res = newGame.ShowDialog();  //wait for start execution
 
             if (res == DialogResult.OK)
             {
-                this.game.current_round = 1;
+                //game started 
+                gameStart();
             }else
             {
                 this.game.current_round = 0;
@@ -89,8 +100,41 @@ namespace Magic_Tournamente_Tables_Management_System
 
             labelCurrentRound.Text = this.game.current_round.ToString() + " / " + this.game.total_rounds.ToString();
 
-            //this.game.total_rounds = newGame.form2game.total_rounds; //already executed from 
+        }
+
+        private void gameStart()
+        {
+            this.game.current_round = 1;
+
+            //check players
+
+
+            //check tables
 
         }
+
+        private void buttonNextRound_Click(object sender, EventArgs e)
+        {
+            if (!this.game.game_started)
+            {
+                MessageBox.Show("Game not started!");
+            }
+        }
+
+        private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormInfo info = new FormInfo(); //set total_rounds here
+            DialogResult res = info.ShowDialog();  //wait for start execution
+        }
+
+       
+
+
+        //UNUSEFUL FUNCTIONS
+        private void label1_Click_1(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+
+        
     }
 }
