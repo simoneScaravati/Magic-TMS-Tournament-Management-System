@@ -1,3 +1,4 @@
+
 namespace Magic_Tournamente_Tables_Management_System
 {
     public partial class Form1 : Form
@@ -6,7 +7,7 @@ namespace Magic_Tournamente_Tables_Management_System
         public Form1()
         {
             InitializeComponent();
-            game = new Game(0);
+            this.game = new Game(0);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -91,25 +92,55 @@ namespace Magic_Tournamente_Tables_Management_System
 
             if (res == DialogResult.OK)
             {
-                //game started 
                 gameStart();
-            }else
-            {
-                this.game.current_round = 0;
             }
 
-            labelCurrentRound.Text = this.game.current_round.ToString() + " / " + this.game.total_rounds.ToString();
+            UpdateRoundsText();
+            
 
         }
 
-        private void gameStart()
+        private void UpdateRoundsText()
         {
-            this.game.current_round = 1;
+            labelCurrentRound.Text = this.game.current_round.ToString() + " / " + this.game.total_rounds.ToString();
+        }
 
-            //check players
+        private void gameStart()
+        { 
+            if(!this.game.game_started)
+            {
+                //check players
+                int p = Convert.ToInt32(listBoxPlayers.Items.Count.ToString());
+                if (p > 0)
+                {
+                    this.game.total_players = p;
+                }
+                else
+                {
+                    MessageBox.Show("Too few players");
+                    return;
+                }
 
+                //check tables
+                int t = Convert.ToInt32(listBoxTables.Items.Count.ToString());
+                if (t > 0)
+                {
+                    this.game.total_tables = t;
+                }
+                else
+                {
+                    MessageBox.Show("Too few tables");
+                    return;
+                }
 
-            //check tables
+                //if everything is ok
+                this.game.current_round = 0;
+                this.game.game_started = true;
+            }else
+            {
+                MessageBox.Show("Game already started, please restart the program");
+            }
+            
 
         }
 
@@ -118,7 +149,37 @@ namespace Magic_Tournamente_Tables_Management_System
             if (!this.game.game_started)
             {
                 MessageBox.Show("Game not started!");
+                return ;
             }
+
+            if(this.game.current_round == 0)
+            {
+                //first round
+
+                
+            }
+            else if(this.game.current_round == this.game.total_rounds)
+            {
+                //last round
+            }
+            else
+            {
+                //middle rounds
+            }
+
+            //MessageBox Yes or No fure surance of points
+            DialogResult dialogResult = MessageBox.Show("Are you sure to continue to next round?", "Warning Next Round", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+                this.game.current_round++;
+                UpdateRoundsText();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+
         }
 
         private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -135,6 +196,9 @@ namespace Magic_Tournamente_Tables_Management_System
         private void label2_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
 
-        
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
