@@ -1,3 +1,4 @@
+using static Magic_Tournamente_Tables_Management_System.version;
 
 namespace Magic_Tournamente_Tables_Management_System
 {
@@ -8,6 +9,12 @@ namespace Magic_Tournamente_Tables_Management_System
         {
             InitializeComponent();
             this.game = new Game(0);
+            setTitleWithVersion();
+        }
+
+        private void setTitleWithVersion()
+        {
+            this.Text = this.Text + " - " + version.getVersionText();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.labelInfo = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelInfo.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelInfo.Location = new System.Drawing.Point(0, 0);
+            this.labelInfo.Location = new System.Drawing.Point(79, 28);
+            this.labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(388, 147);
             this.labelInfo.TabIndex = 0;
@@ -46,14 +47,26 @@
     " MIT\r\n";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(200, 223);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(136, 21);
+            this.labelVersion.TabIndex = 1;
+            this.labelVersion.Text = "VERSION: x.x.x";
+            // 
             // FormInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(387, 162);
+            this.ClientSize = new System.Drawing.Size(554, 295);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelInfo);
+            this.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Info";
@@ -65,5 +78,6 @@
         #endregion
 
         private Label labelInfo;
+        private Label labelVersion;
     }
 }
