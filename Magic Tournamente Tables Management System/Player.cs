@@ -11,6 +11,7 @@ namespace Magic_Tournamente_Tables_Management_System
         public String name;
         public int score;
         public int won_buy_count;
+        public const int BUY_MAX_COUNT = 1;
         public int won_on_small_table_count;
         public int won_on_big_tables_count;
 

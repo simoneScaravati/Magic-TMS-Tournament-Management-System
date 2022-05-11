@@ -33,7 +33,12 @@
             this.labelPlayers = new System.Windows.Forms.Label();
             this.labelTables = new System.Windows.Forms.Label();
             this.listBoxTables = new System.Windows.Forms.ListBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewRanking = new System.Windows.Forms.DataGridView();
+            this.Player = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WonOnBigTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WonOnSmallTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Buy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddPlayer = new System.Windows.Forms.Button();
             this.textBoxAddPlayer = new System.Windows.Forms.TextBox();
             this.buttonRemovePlayer = new System.Windows.Forms.Button();
@@ -42,7 +47,7 @@
             this.buttonAddTable = new System.Windows.Forms.Button();
             this.buttonEditPlayer = new System.Windows.Forms.Button();
             this.buttonEditTable = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMatching = new System.Windows.Forms.DataGridView();
             this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WonRound = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -60,13 +65,8 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelScore = new System.Windows.Forms.Label();
-            this.Player = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WonOnBigTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WonOnSmallTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Buy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRanking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatching)).BeginInit();
             this.menuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +86,8 @@
             // labelPlayers
             // 
             this.labelPlayers.AutoSize = true;
+            this.labelPlayers.BackColor = System.Drawing.Color.Transparent;
+            this.labelPlayers.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelPlayers.Location = new System.Drawing.Point(13, 25);
             this.labelPlayers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPlayers.Name = "labelPlayers";
@@ -97,6 +99,8 @@
             // labelTables
             // 
             this.labelTables.AutoSize = true;
+            this.labelTables.BackColor = System.Drawing.Color.Transparent;
+            this.labelTables.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelTables.Location = new System.Drawing.Point(265, 25);
             this.labelTables.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTables.Name = "labelTables";
@@ -116,26 +120,61 @@
             this.listBoxTables.Size = new System.Drawing.Size(230, 277);
             this.listBoxTables.TabIndex = 3;
             // 
-            // dataGridView
+            // dataGridViewRanking
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewRanking.AllowUserToAddRows = false;
+            this.dataGridViewRanking.AllowUserToDeleteRows = false;
+            this.dataGridViewRanking.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewRanking.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewRanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRanking.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player,
             this.Score,
             this.WonOnBigTable,
             this.WonOnSmallTable,
             this.Buy});
-            this.dataGridView.Location = new System.Drawing.Point(13, 534);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowTemplate.Height = 25;
-            this.dataGridView.Size = new System.Drawing.Size(1176, 260);
-            this.dataGridView.TabIndex = 5;
-            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            this.dataGridViewRanking.Location = new System.Drawing.Point(13, 534);
+            this.dataGridViewRanking.Name = "dataGridViewRanking";
+            this.dataGridViewRanking.ReadOnly = true;
+            this.dataGridViewRanking.RowTemplate.Height = 25;
+            this.dataGridViewRanking.Size = new System.Drawing.Size(1176, 260);
+            this.dataGridViewRanking.TabIndex = 5;
+            this.dataGridViewRanking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // Player
+            // 
+            this.Player.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Player.HeaderText = "Player";
+            this.Player.Name = "Player";
+            this.Player.ReadOnly = true;
+            // 
+            // Score
+            // 
+            this.Score.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Score.HeaderText = "Score";
+            this.Score.Name = "Score";
+            this.Score.ReadOnly = true;
+            // 
+            // WonOnBigTable
+            // 
+            this.WonOnBigTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.WonOnBigTable.HeaderText = "Big Tables";
+            this.WonOnBigTable.Name = "WonOnBigTable";
+            this.WonOnBigTable.ReadOnly = true;
+            // 
+            // WonOnSmallTable
+            // 
+            this.WonOnSmallTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.WonOnSmallTable.HeaderText = "Small tables";
+            this.WonOnSmallTable.Name = "WonOnSmallTable";
+            this.WonOnSmallTable.ReadOnly = true;
+            // 
+            // Buy
+            // 
+            this.Buy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Buy.HeaderText = "Buy";
+            this.Buy.Name = "Buy";
+            this.Buy.ReadOnly = true;
             // 
             // buttonAddPlayer
             // 
@@ -220,59 +259,55 @@
             this.buttonEditTable.Text = "Edit Table";
             this.buttonEditTable.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewMatching
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewMatching.AllowUserToAddRows = false;
+            this.dataGridViewMatching.AllowUserToDeleteRows = false;
+            this.dataGridViewMatching.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMatching.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerAssign,
             this.TableAssign,
             this.WonRound,
             this.PairWon,
             this.BuyWon});
-            this.dataGridView1.Location = new System.Drawing.Point(586, 83);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(603, 395);
-            this.dataGridView1.TabIndex = 14;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewMatching.Location = new System.Drawing.Point(586, 83);
+            this.dataGridViewMatching.Name = "dataGridViewMatching";
+            this.dataGridViewMatching.RowTemplate.Height = 25;
+            this.dataGridViewMatching.Size = new System.Drawing.Size(603, 395);
+            this.dataGridViewMatching.TabIndex = 14;
+            this.dataGridViewMatching.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMatching_CellContentClick);
             // 
             // PlayerAssign
             // 
             this.PlayerAssign.HeaderText = "Player";
             this.PlayerAssign.Name = "PlayerAssign";
-            this.PlayerAssign.ReadOnly = true;
             // 
             // TableAssign
             // 
             this.TableAssign.HeaderText = "Table";
             this.TableAssign.Name = "TableAssign";
-            this.TableAssign.ReadOnly = true;
             // 
             // WonRound
             // 
             this.WonRound.HeaderText = "Won Round";
             this.WonRound.Name = "WonRound";
-            this.WonRound.ReadOnly = true;
             // 
             // PairWon
             // 
             this.PairWon.HeaderText = "Pair";
             this.PairWon.Name = "PairWon";
-            this.PairWon.ReadOnly = true;
             // 
             // BuyWon
             // 
             this.BuyWon.HeaderText = "Buy Won";
             this.BuyWon.Name = "BuyWon";
-            this.BuyWon.ReadOnly = true;
             // 
             // labelRound
             // 
             this.labelRound.AutoSize = true;
+            this.labelRound.BackColor = System.Drawing.Color.Transparent;
             this.labelRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRound.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelRound.Location = new System.Drawing.Point(586, 41);
             this.labelRound.Name = "labelRound";
             this.labelRound.Size = new System.Drawing.Size(180, 28);
@@ -283,7 +318,9 @@
             // labelCurrentRound
             // 
             this.labelCurrentRound.AutoSize = true;
+            this.labelCurrentRound.BackColor = System.Drawing.Color.Transparent;
             this.labelCurrentRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCurrentRound.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelCurrentRound.Location = new System.Drawing.Point(772, 41);
             this.labelCurrentRound.Name = "labelCurrentRound";
             this.labelCurrentRound.Size = new System.Drawing.Size(48, 28);
@@ -292,7 +329,7 @@
             // 
             // buttonNextRound
             // 
-            this.buttonNextRound.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonNextRound.BackColor = System.Drawing.Color.Transparent;
             this.buttonNextRound.Location = new System.Drawing.Point(848, 36);
             this.buttonNextRound.Name = "buttonNextRound";
             this.buttonNextRound.Size = new System.Drawing.Size(112, 44);
@@ -369,52 +406,21 @@
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(552, 511);
+            this.labelScore.BackColor = System.Drawing.Color.Transparent;
+            this.labelScore.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelScore.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelScore.Location = new System.Drawing.Point(42, 510);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(72, 20);
+            this.labelScore.Size = new System.Drawing.Size(73, 21);
             this.labelScore.TabIndex = 21;
             this.labelScore.Text = "Ranking";
-            // 
-            // Player
-            // 
-            this.Player.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Player.HeaderText = "Player";
-            this.Player.Name = "Player";
-            this.Player.ReadOnly = true;
-            // 
-            // Score
-            // 
-            this.Score.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Score.HeaderText = "Score";
-            this.Score.Name = "Score";
-            this.Score.ReadOnly = true;
-            // 
-            // WonOnBigTable
-            // 
-            this.WonOnBigTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.WonOnBigTable.HeaderText = "Big Tables";
-            this.WonOnBigTable.Name = "WonOnBigTable";
-            this.WonOnBigTable.ReadOnly = true;
-            // 
-            // WonOnSmallTable
-            // 
-            this.WonOnSmallTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.WonOnSmallTable.HeaderText = "Small tables";
-            this.WonOnSmallTable.Name = "WonOnSmallTable";
-            this.WonOnSmallTable.ReadOnly = true;
-            // 
-            // Buy
-            // 
-            this.Buy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Buy.HeaderText = "Buy";
-            this.Buy.Name = "Buy";
-            this.Buy.ReadOnly = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::Magic_Tournamente_Tables_Management_System.Properties.Resources.wizard;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1201, 806);
             this.Controls.Add(this.labelScore);
@@ -422,7 +428,7 @@
             this.Controls.Add(this.buttonNextRound);
             this.Controls.Add(this.labelCurrentRound);
             this.Controls.Add(this.labelRound);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewMatching);
             this.Controls.Add(this.buttonEditTable);
             this.Controls.Add(this.buttonEditPlayer);
             this.Controls.Add(this.buttonRemoveTable);
@@ -431,7 +437,7 @@
             this.Controls.Add(this.buttonRemovePlayer);
             this.Controls.Add(this.textBoxAddPlayer);
             this.Controls.Add(this.buttonAddPlayer);
-            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.dataGridViewRanking);
             this.Controls.Add(this.labelTables);
             this.Controls.Add(this.listBoxTables);
             this.Controls.Add(this.labelPlayers);
@@ -443,8 +449,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Magic Tournament Tables Management System";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRanking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatching)).EndInit();
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
             this.ResumeLayout(false);
@@ -457,7 +463,7 @@
         private Label labelPlayers;
         private Label labelTables;
         private ListBox listBoxTables;
-        private DataGridView dataGridView;
+        private DataGridView dataGridViewRanking;
         private Button buttonAddPlayer;
         private TextBox textBoxAddPlayer;
         private Button buttonRemovePlayer;
@@ -466,7 +472,7 @@
         private Button buttonAddTable;
         private Button buttonEditPlayer;
         private Button buttonEditTable;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewMatching;
         private Label labelRound;
         private Label labelCurrentRound;
         private Button buttonNextRound;
@@ -478,16 +484,16 @@
         private ToolStripMenuItem openGameTODOToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem1;
-        private DataGridViewTextBoxColumn PlayerAssign;
-        private DataGridViewTextBoxColumn TableAssign;
-        private DataGridViewCheckBoxColumn WonRound;
-        private DataGridViewCheckBoxColumn PairWon;
-        private DataGridViewCheckBoxColumn BuyWon;
         private Label labelScore;
         private DataGridViewTextBoxColumn Player;
         private DataGridViewTextBoxColumn Score;
         private DataGridViewTextBoxColumn WonOnBigTable;
         private DataGridViewTextBoxColumn WonOnSmallTable;
         private DataGridViewTextBoxColumn Buy;
+        private DataGridViewTextBoxColumn PlayerAssign;
+        private DataGridViewTextBoxColumn TableAssign;
+        private DataGridViewCheckBoxColumn WonRound;
+        private DataGridViewCheckBoxColumn PairWon;
+        private DataGridViewCheckBoxColumn BuyWon;
     }
 }

@@ -10,6 +10,7 @@ namespace Magic_Tournamente_Tables_Management_System
         public Form1()
         {
             InitializeComponent();
+            dataGridViewMatching.CellContentClick += dataGridViewMatching_CellContentClick;
             this.game = new Game(0);
             setTitleWithVersion();
         }
@@ -79,7 +80,7 @@ namespace Magic_Tournamente_Tables_Management_System
             listBoxTables.Refresh();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewMatching_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -240,12 +241,68 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void UpdateRanking()
         {
-            throw new NotImplementedException();
+            //getting checkbox value
+            //DataGridViewCheckBoxCell chkchecking = roow.Cells[0] as DataGridViewCheckBoxCell;
+
+            //if (Convert.ToBoolean(chkchecking.Value) == true)
+            //{
+            //}
+            
+            foreach (Player p in this.game.player_list)
+            {
+                int rowId = dataGridViewRanking.Rows.Add();
+
+                try
+                {
+                    // Grab the new row!
+                    DataGridViewRow row = dataGridViewRanking.Rows[rowId];
+
+                    row.Cells["Player"].Value = p.name;
+                    row.Cells["Score"].Value = p.score;
+                    row.Cells["WonOnBigTable"].Value = p.won_on_big_tables_count;
+                    row.Cells["WonOnSmallTable"].Value = p.won_on_small_table_count;
+                    row.Cells["Buy"].Value = p.won_buy_count;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            
+
+
+
         }
 
         private void UpdateMatching()
         {
-            throw new NotImplementedException();
+            foreach (Table t in this.game.table_list)
+            {
+                foreach(Player p in t.players)
+                {
+                    int rowId = dataGridViewMatching.Rows.Add();
+
+                    try
+                    {
+                        // Grab the new row!
+                        DataGridViewRow row = dataGridViewMatching.Rows[rowId];
+
+                        row.Cells["PlayerAssign"].Value = p.name;
+                        row.Cells["TableAssign"].Value = t.id;
+                        row.Cells["WonRound"].Value = false;
+                        row.Cells["PairWon"].Value = false;
+                        row.Cells["BuyWon"].Value = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                
+            }
+            
+            
         }
 
         private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
