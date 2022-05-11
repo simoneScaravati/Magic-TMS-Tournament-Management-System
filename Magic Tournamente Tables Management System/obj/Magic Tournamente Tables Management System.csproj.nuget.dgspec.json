@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SimoneScaravati\\OneDrive - e-Novia S.p.A\\Documenti\\PERSONAL\\new-magic_repo\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj": {}
+    "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SimoneScaravati\\OneDrive - e-Novia S.p.A\\Documenti\\PERSONAL\\new-magic_repo\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj": {
+    "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SimoneScaravati\\OneDrive - e-Novia S.p.A\\Documenti\\PERSONAL\\new-magic_repo\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
+        "projectUniqueName": "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
         "projectName": "Magic Tournamente Tables Management System",
-        "projectPath": "C:\\Users\\SimoneScaravati\\OneDrive - e-Novia S.p.A\\Documenti\\PERSONAL\\new-magic_repo\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
-        "packagesPath": "C:\\Users\\SimoneScaravati\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SimoneScaravati\\OneDrive - e-Novia S.p.A\\Documenti\\PERSONAL\\new-magic_repo\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\obj\\",
+        "projectPath": "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
+        "packagesPath": "C:\\Users\\simon\\.nuget\\packages\\",
+        "outputPath": "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\SimoneScaravati\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\simon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

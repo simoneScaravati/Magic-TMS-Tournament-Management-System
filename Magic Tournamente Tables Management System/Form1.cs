@@ -196,7 +196,9 @@ namespace Magic_Tournamente_Tables_Management_System
                     {
                         foreach (Player p in listCopy)
                         {
-                            p.score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
+                            Player pl = this.game.player_list.Find(x => x.name == p.name);
+                            pl.won_buy_count++;
+                            pl.score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
                         }
                     }
 
