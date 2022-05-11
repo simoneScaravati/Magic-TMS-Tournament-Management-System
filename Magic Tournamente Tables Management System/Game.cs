@@ -15,6 +15,7 @@ namespace Magic_Tournamente_Tables_Management_System
         public const int WINNER_POINTS = 3;
         public const int TIE_POINTS = 1;
         public const int LOSER_POINTS = 0;
+        public const int BUY_POINTS = 3;
 
 
         public int total_rounds;
@@ -34,7 +35,6 @@ namespace Magic_Tournamente_Tables_Management_System
             this.player_list = new List<Player>();
             this.total_players = 0;
             this.total_tables = 0;
-
         }
     }
 }

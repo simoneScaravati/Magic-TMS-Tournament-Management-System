@@ -9,8 +9,8 @@ namespace Magic_Tournamente_Tables_Management_System
 {
     public class Table
     {
-        private String id;
-        private List<Player> players;
+        public String id;
+        public List<Player> players;
         public Table(String id="table")
         {
             this.id = id;

@@ -32,14 +32,6 @@ namespace Magic_Tournamente_Tables_Management_System
             }
         }
 
-        //DEMO
-        /*
-        List<Product> products = GetProducts();
-        products.Shuffle();
-         */
-
-
-
         private void buttonAddPlayer_Click(object sender, EventArgs e)
         {
             String temp = textBoxAddPlayer.Text;
@@ -58,7 +50,8 @@ namespace Magic_Tournamente_Tables_Management_System
         
 
         private void buttonRemovePlayer_Click(object sender, EventArgs e)
-        {
+        { 
+            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
             listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
             listBoxPlayers.Refresh();
         }
@@ -81,6 +74,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void buttonRemoveTable_Click(object sender, EventArgs e)
         {
+            this.game.table_list.RemoveAll(t => t.id == listBoxTables.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
             listBoxTables.Items.Remove(listBoxTables.SelectedItem);
             listBoxTables.Refresh();
         }
@@ -131,11 +125,14 @@ namespace Magic_Tournamente_Tables_Management_System
                     return;
                 }
 
-                //check tables
+                //check tables --> doesn't count the real number insert, but it calculates the criteria
                 int t = Convert.ToInt32(listBoxTables.Items.Count.ToString());
                 if (t > 0)
                 {
-                    this.game.total_tables = t;
+                    int total_players = this.game.total_players;
+                    int diff = total_players / Game.PLAYERS_PER_TABLE;
+                    int tables = (total_players - diff) / Game.EXTRA_TABLE_PLAYERS;
+                    this.game.total_tables = tables;
                 }
                 else
                 {
@@ -154,6 +151,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
         }
 
+        /*IMPORTANT NOTE: for easy development, we consider that organizer already checks if table number is correct */
         private void buttonNextRound_Click(object sender, EventArgs e)
         {
             if (!this.game.game_started)
@@ -168,12 +166,44 @@ namespace Magic_Tournamente_Tables_Management_System
                 List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list 
                 ShufflePlayers(listCopy); //randomize it
                 int n = listCopy.Count;
-                while (n > Game.PLAYERS_PER_TABLE)
+                int table_counter = 0;
+                List<Table> t = this.game.table_list; //pointer for refactoring
+                while (table_counter < this.game.total_tables)
                 {
+                    if(n >= Game.PLAYERS_PER_TABLE)
+                    {
+                        for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
+                        {
+                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                        }
+
+                        n -= Game.PLAYERS_PER_TABLE;
+                        table_counter++;
+                        
+                    }else if(n == Game.EXTRA_TABLE_PLAYERS)
+                    {
+                        for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
+                        {
+                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                        }
+
+                        n -= Game.EXTRA_TABLE_PLAYERS;
+                        table_counter++;
+                    }else
+                    {
+                        foreach (Player p in listCopy)
+                        {
+                            p.score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
+                        }
+                    }
 
                 }
 
+                //table matching will look in every table player list
 
+                //ranking will look at every player
 
             }
             else if(this.game.current_round == this.game.total_rounds)
@@ -192,12 +222,30 @@ namespace Magic_Tournamente_Tables_Management_System
                 //do something
                 this.game.current_round++;
                 UpdateRoundsText();
+
+                /* TODO update matching datagrid */
+                UpdateMatching();
+
+                /* TODO update ranking grid */
+                UpdateRanking();
+
+
             }
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
             }
 
+        }
+
+        private void UpdateRanking()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdateMatching()
+        {
+            throw new NotImplementedException();
         }
 
         private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
