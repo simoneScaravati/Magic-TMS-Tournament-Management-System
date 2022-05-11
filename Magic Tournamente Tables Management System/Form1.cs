@@ -5,6 +5,8 @@ namespace Magic_Tournamente_Tables_Management_System
     public partial class Form1 : Form
     {
         private Game game;
+        private Random rng = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -17,25 +19,26 @@ namespace Magic_Tournamente_Tables_Management_System
             this.Text = this.Text + " - " + version.getVersionText();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public void ShufflePlayers(List<Player> list)
         {
-
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Player value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        //DEMO
+        /*
+        List<Product> products = GetProducts();
+        products.Shuffle();
+         */
 
-        }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonAddPlayer_Click(object sender, EventArgs e)
         {
@@ -162,8 +165,16 @@ namespace Magic_Tournamente_Tables_Management_System
             if(this.game.current_round == 0)
             {
                 //first round
+                List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list 
+                ShufflePlayers(listCopy); //randomize it
+                int n = listCopy.Count;
+                while (n > Game.PLAYERS_PER_TABLE)
+                {
 
-                
+                }
+
+
+
             }
             else if(this.game.current_round == this.game.total_rounds)
             {
@@ -207,5 +218,12 @@ namespace Magic_Tournamente_Tables_Management_System
         {
 
         }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e) { }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void label1_Click(object sender, EventArgs e) { }
+
     }
 }

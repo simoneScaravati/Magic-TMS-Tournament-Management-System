@@ -10,11 +10,11 @@ namespace Magic_Tournamente_Tables_Management_System
 {
     public class Game
     {
-        const int PLAYERS_PER_TABLE = 4;
-        const int EXTRA_TABLE_PLAYERS = 3;
-        const int WINNER_POINTS = 3;
-        const int TIE_POINTS = 1;
-        const int LOSER_POINTS = 0;
+        public const int PLAYERS_PER_TABLE = 4;
+        public const int EXTRA_TABLE_PLAYERS = 3;
+        public const int WINNER_POINTS = 3;
+        public const int TIE_POINTS = 1;
+        public const int LOSER_POINTS = 0;
 
 
         public int total_rounds;
