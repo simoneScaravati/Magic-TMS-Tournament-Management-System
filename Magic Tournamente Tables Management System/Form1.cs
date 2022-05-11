@@ -182,7 +182,8 @@ namespace Magic_Tournamente_Tables_Management_System
                         n -= Game.PLAYERS_PER_TABLE;
                         table_counter++;
                         
-                    }else if(n == Game.EXTRA_TABLE_PLAYERS)
+                    }
+                    if(n == Game.EXTRA_TABLE_PLAYERS)
                     {
                         for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
                         {
@@ -192,17 +193,18 @@ namespace Magic_Tournamente_Tables_Management_System
 
                         n -= Game.EXTRA_TABLE_PLAYERS;
                         table_counter++;
-                    }else
-                    {
-                        foreach (Player p in listCopy)
-                        {
-                            Player pl = this.game.player_list.Find(x => x.name == p.name);
-                            pl.won_buy_count++;
-                            pl.score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
-                        }
                     }
 
                 }
+                
+                //buy counters
+                foreach (Player p in listCopy)
+                {
+                    int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                    this.game.player_list[i].won_buy_count++;
+                    this.game.player_list[i].score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
+                }
+                
 
                 //table matching will look in every table player list
 
