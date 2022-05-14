@@ -48,11 +48,6 @@
             this.buttonEditPlayer = new System.Windows.Forms.Button();
             this.buttonEditTable = new System.Windows.Forms.Button();
             this.dataGridViewMatching = new System.Windows.Forms.DataGridView();
-            this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WonRound = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PairWon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.BuyWon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelRound = new System.Windows.Forms.Label();
             this.labelCurrentRound = new System.Windows.Forms.Label();
             this.buttonNextRound = new System.Windows.Forms.Button();
@@ -65,6 +60,10 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelScore = new System.Windows.Forms.Label();
+            this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WonRound = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TieWon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRanking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatching)).BeginInit();
             this.menuBar.SuspendLayout();
@@ -268,39 +267,13 @@
             this.PlayerAssign,
             this.TableAssign,
             this.WonRound,
-            this.PairWon,
-            this.BuyWon});
+            this.TieWon});
             this.dataGridViewMatching.Location = new System.Drawing.Point(586, 83);
             this.dataGridViewMatching.Name = "dataGridViewMatching";
             this.dataGridViewMatching.RowTemplate.Height = 25;
             this.dataGridViewMatching.Size = new System.Drawing.Size(603, 395);
             this.dataGridViewMatching.TabIndex = 14;
             this.dataGridViewMatching.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMatching_CellContentClick);
-            // 
-            // PlayerAssign
-            // 
-            this.PlayerAssign.HeaderText = "Player";
-            this.PlayerAssign.Name = "PlayerAssign";
-            // 
-            // TableAssign
-            // 
-            this.TableAssign.HeaderText = "Table";
-            this.TableAssign.Name = "TableAssign";
-            // 
-            // WonRound
-            // 
-            this.WonRound.HeaderText = "Won Round";
-            this.WonRound.Name = "WonRound";
-            // 
-            // PairWon
-            // 
-            this.PairWon.HeaderText = "Pair";
-            this.PairWon.Name = "PairWon";
-            // 
-            // BuyWon
-            // 
-            this.BuyWon.HeaderText = "Buy Won";
-            this.BuyWon.Name = "BuyWon";
             // 
             // labelRound
             // 
@@ -370,21 +343,21 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // saveTODOToolStripMenuItem
             // 
             this.saveTODOToolStripMenuItem.Name = "saveTODOToolStripMenuItem";
-            this.saveTODOToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.saveTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveTODOToolStripMenuItem.Text = "Save Game (TODO)";
             this.saveTODOToolStripMenuItem.Click += new System.EventHandler(this.saveTODOToolStripMenuItem_Click);
             // 
             // openGameTODOToolStripMenuItem
             // 
             this.openGameTODOToolStripMenuItem.Name = "openGameTODOToolStripMenuItem";
-            this.openGameTODOToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.openGameTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openGameTODOToolStripMenuItem.Text = "Open Game (TODO)";
             // 
             // infoToolStripMenuItem
@@ -415,12 +388,31 @@
             this.labelScore.TabIndex = 21;
             this.labelScore.Text = "Ranking";
             // 
+            // PlayerAssign
+            // 
+            this.PlayerAssign.HeaderText = "Player";
+            this.PlayerAssign.Name = "PlayerAssign";
+            // 
+            // TableAssign
+            // 
+            this.TableAssign.HeaderText = "Table";
+            this.TableAssign.Name = "TableAssign";
+            // 
+            // WonRound
+            // 
+            this.WonRound.HeaderText = "Won Round";
+            this.WonRound.Name = "WonRound";
+            // 
+            // TieWon
+            // 
+            this.TieWon.HeaderText = "Tie";
+            this.TieWon.Name = "TieWon";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Magic_Tournamente_Tables_Management_System.Properties.Resources.wizard;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1201, 806);
             this.Controls.Add(this.labelScore);
@@ -493,7 +485,6 @@
         private DataGridViewTextBoxColumn PlayerAssign;
         private DataGridViewTextBoxColumn TableAssign;
         private DataGridViewCheckBoxColumn WonRound;
-        private DataGridViewCheckBoxColumn PairWon;
-        private DataGridViewCheckBoxColumn BuyWon;
+        private DataGridViewCheckBoxColumn TieWon;
     }
 }

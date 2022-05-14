@@ -1,4 +1,8 @@
 using static Magic_Tournamente_Tables_Management_System.version;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+
 
 namespace Magic_Tournamente_Tables_Management_System
 {
@@ -86,8 +90,23 @@ namespace Magic_Tournamente_Tables_Management_System
         }
 
         private void saveTODOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        { 
+            string json_players = JsonSerializer.Serialize(this.game.player_list);
+            string json_tables= JsonSerializer.Serialize(this.game.table_list);
 
+            string json_data = "[" + json_players + "," + json_tables + "]";
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JSON File|*.json";
+            saveFileDialog1.Title = "Save Current Game settings";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                File.WriteAllText(saveFileDialog1.FileName, json_data);
+            }
+            
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,10 +149,7 @@ namespace Magic_Tournamente_Tables_Management_System
                 int t = Convert.ToInt32(listBoxTables.Items.Count.ToString());
                 if (t > 0)
                 {
-                    int total_players = this.game.total_players;
-                    int diff = total_players / Game.PLAYERS_PER_TABLE;
-                    int tables = (total_players - diff) / Game.EXTRA_TABLE_PLAYERS;
-                    this.game.total_tables = tables;
+                    UpdateTotalTables();
                 }
                 else
                 {
@@ -152,6 +168,14 @@ namespace Magic_Tournamente_Tables_Management_System
 
         }
 
+        private void UpdateTotalTables()
+        {
+            int total_players = this.game.total_players;
+            int diff = total_players / Game.PLAYERS_PER_TABLE;
+            int tables = (total_players - diff) / Game.EXTRA_TABLE_PLAYERS;
+            this.game.total_tables = tables;
+        }
+
         /*IMPORTANT NOTE: for easy development, we consider that organizer already checks if table number is correct */
         private void buttonNextRound_Click(object sender, EventArgs e)
         {
@@ -161,69 +185,71 @@ namespace Magic_Tournamente_Tables_Management_System
                 return ;
             }
 
-            if(this.game.current_round == 0)
-            {
-                //first round
-                List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list 
-                ShufflePlayers(listCopy); //randomize it
-                int n = listCopy.Count;
-                int table_counter = 0;
-                List<Table> t = this.game.table_list; //pointer for refactoring
-                while (table_counter < this.game.total_tables)
-                {
-                    if(n >= Game.PLAYERS_PER_TABLE)
-                    {
-                        for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
-                        {
-                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
-                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
-                        }
-
-                        n -= Game.PLAYERS_PER_TABLE;
-                        table_counter++;
-                        
-                    }
-                    if(n == Game.EXTRA_TABLE_PLAYERS)
-                    {
-                        for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
-                        {
-                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
-                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
-                        }
-
-                        n -= Game.EXTRA_TABLE_PLAYERS;
-                        table_counter++;
-                    }
-
-                }
-                
-                //buy counters
-                foreach (Player p in listCopy)
-                {
-                    int i = this.game.player_list.FindIndex(x => x.name == p.name);
-                    this.game.player_list[i].won_buy_count++;
-                    this.game.player_list[i].score += Game.BUY_POINTS; // TODO check for next rounds to see if someone had already buy points (retry random?)
-                }
-                
-
-                //table matching will look in every table player list
-
-                //ranking will look at every player
-
-            }
-            else if(this.game.current_round == this.game.total_rounds)
-            {
-                //last round
-            }
-            else
-            {
-                //middle rounds
-            }
-
             //MessageBox Yes or No fure surance of points
             DialogResult dialogResult = MessageBox.Show("Are you sure to continue to next round?", "Warning Next Round", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                if (this.game.current_round == 0)
+                {
+                    //first round
+                    List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list 
+                    ShufflePlayers(listCopy); //randomize it
+                    int n = listCopy.Count;
+                    int table_counter = 0;
+                    List<Table> t = this.game.table_list; //pointer for refactoring
+                    UpdateTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
+                    while (table_counter < this.game.total_tables)
+                    {
+                        if (n >= Game.PLAYERS_PER_TABLE)
+                        {
+                            for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
+                            {
+                                t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                                listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                            }
+
+                            n -= Game.PLAYERS_PER_TABLE;
+                            table_counter++;
+
+                        }
+                        if (n == Game.EXTRA_TABLE_PLAYERS)
+                        {
+                            for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
+                            {
+                                t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                                listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                            }
+
+                            n -= Game.EXTRA_TABLE_PLAYERS;
+                            table_counter++;
+                        }
+
+                    }
+
+                    //buy counters
+                    foreach (Player p in listCopy)
+                    {
+                        int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                        this.game.player_list[i].won_buy_count++;
+                        this.game.player_list[i].score += Game.BUY_POINTS; 
+                        // TODO check for next rounds to see if someone had already buy points (retry random?)
+                    }
+
+
+                    //table matching will look in every table player list
+
+                    //ranking will look at every player
+
+                }
+                else if (this.game.current_round == this.game.total_rounds)
+                {
+                    //last round
+                }
+                else
+                {
+                    //middle rounds
+                }
+
                 //do something
                 this.game.current_round++;
                 UpdateRoundsText();
@@ -240,18 +266,62 @@ namespace Magic_Tournamente_Tables_Management_System
             {
                 //do something else
             }
+           
 
         }
 
         private void UpdateRanking()
         {
-            //getting checkbox value
-            //DataGridViewCheckBoxCell chkchecking = roow.Cells[0] as DataGridViewCheckBoxCell;
+            if (this.game.current_round != 0)
+            {
+                //if it's not the first round, interpret the datagrid view of matching
+                foreach (Table t in this.game.table_list)
+                {
+                    foreach(Player p in t.players)
+                    {
+                        String searchValue = p.name;
+                        int rowIndex = -1;
+                        foreach (DataGridViewRow row in dataGridViewMatching.Rows)
+                        {
+                            if (row.Cells["Player"].Value.Equals(searchValue))
+                            {
+                                rowIndex = row.Index;
+                                DataGridViewCheckBoxCell chkcheckingWon = (DataGridViewCheckBoxCell)row.Cells["WonRound"].Value;
+                                if (Convert.ToBoolean(chkcheckingWon.Value) == true)
+                                {
+                                    if(t.players.Count == Game.PLAYERS_PER_TABLE)
+                                    {
+                                        int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                                        this.game.player_list[i].won_on_big_tables_count++;
+                                        this.game.player_list[i].score += Game.WINNER_POINTS;
+                                    }
 
-            //if (Convert.ToBoolean(chkchecking.Value) == true)
-            //{
-            //}
-            
+                                    else if (t.players.Count == Game.EXTRA_TABLE_PLAYERS)
+                                    {
+                                        int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                                        this.game.player_list[i].won_on_small_table_count++;
+                                        this.game.player_list[i].score += Game.WINNER_POINTS;
+                                    }
+
+                                }
+
+                                DataGridViewCheckBoxCell chkcheckingTie = (DataGridViewCheckBoxCell)row.Cells["TieWon"].Value;
+                                if (Convert.ToBoolean(chkcheckingTie.Value) == true)
+                                {
+                                    int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                                    this.game.player_list[i].score += Game.TIE_POINTS;
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+                    
+                }
+                    
+            }
+
+            dataGridViewRanking.Rows.Clear(); //every time cleans everything up, so if the players have changed it's ok
             foreach (Player p in this.game.player_list)
             {
                 int rowId = dataGridViewRanking.Rows.Add();
@@ -273,10 +343,6 @@ namespace Magic_Tournamente_Tables_Management_System
                 }
             }
 
-            
-
-
-
         }
 
         private void UpdateMatching()
@@ -296,7 +362,7 @@ namespace Magic_Tournamente_Tables_Management_System
                         row.Cells["TableAssign"].Value = t.id;
                         row.Cells["WonRound"].Value = false;
                         row.Cells["PairWon"].Value = false;
-                        row.Cells["BuyWon"].Value = false;
+                        //row.Cells["BuyWon"].Value = false; //deprecated
                     }
                     catch (Exception ex)
                     {
