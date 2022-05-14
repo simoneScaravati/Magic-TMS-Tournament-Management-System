@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YpLBBBanUMypsAzloK9xElL/iHPtp+rVVD0X0wYcNUk+mHV0PNFFMw56YU0bb8dIXt87A8JOXNKT32rPWyUlvg==",
+  "dgSpecHash": "GgxHX1de/1P0Ft0IJpB0Mw4y4s/eTH19mSiPSJ1AP7vWRxtKIpPaliCL6rr68aChjiCM97LU9udT8zPZf49Wpw==",
   "success": true,
   "projectFilePath": "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\simon\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

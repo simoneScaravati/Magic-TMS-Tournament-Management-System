@@ -60,7 +60,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openGameTODOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelScore = new System.Windows.Forms.Label();
@@ -354,7 +354,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.openGameTODOToolStripMenuItem});
+            this.loadGameToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -374,11 +374,12 @@
             this.saveToolStripMenuItem.Text = "Save Game";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // openGameTODOToolStripMenuItem
+            // loadGameToolStripMenuItem
             // 
-            this.openGameTODOToolStripMenuItem.Name = "openGameTODOToolStripMenuItem";
-            this.openGameTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openGameTODOToolStripMenuItem.Text = "Open Game (TODO)";
+            this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadGameToolStripMenuItem.Text = "Load Game";
+            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
@@ -473,7 +474,7 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem newGameToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem openGameTODOToolStripMenuItem;
+        private ToolStripMenuItem loadGameToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem1;
         private Label labelScore;

@@ -58,3 +58,5 @@ C:\Users\SimoneScaravati\OneDrive - e-Novia S.p.A\Documenti\PERSONAL\new-magic_r
 C:\Users\SimoneScaravati\OneDrive - e-Novia S.p.A\Documenti\PERSONAL\new-magic_repo\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic Tournamente Tables Management System.pdb
 C:\Users\SimoneScaravati\OneDrive - e-Novia S.p.A\Documenti\PERSONAL\new-magic_repo\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic Tournamente Tables Management System.genruntimeconfig.cache
 C:\Users\SimoneScaravati\OneDrive - e-Novia S.p.A\Documenti\PERSONAL\new-magic_repo\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\ref\Magic Tournamente Tables Management System.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic Tournamente Tables Management System.csproj.CopyComplete

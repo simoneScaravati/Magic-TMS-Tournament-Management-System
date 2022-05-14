@@ -1,7 +1,7 @@
 using static Magic_Tournamente_Tables_Management_System.version;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
+using Newtonsoft.Json;
 
 
 namespace Magic_Tournamente_Tables_Management_System
@@ -90,32 +90,35 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var jsonplayerlist = new String[listBoxPlayers.Items.Count];
-            int i = 0;
+            //var jsonplayerlist = new String[listBoxPlayers.Items.Count];
+            //int i = 0;
 
-            foreach (var listBoxItem in listBoxPlayers.Items)
-            {
-                jsonplayerlist[i] = listBoxItem.ToString();
-                i++;
-            }
+            //foreach (var listBoxItem in listBoxPlayers.Items)
+            //{
+            //    jsonplayerlist[i] = listBoxItem.ToString()!;
+            //    i++;
+            //}
 
-            var jsonTablelist = new String[listBoxTables.Items.Count];
-            i = 0;
+            //var jsonTablelist = new String[listBoxTables.Items.Count];
+            //i = 0;
 
-            foreach (var listBoxItem in listBoxTables.Items)
-            {
-                jsonTablelist[i] = listBoxItem.ToString();
-                i++;
-            }
+            //foreach (var listBoxItem in listBoxTables.Items)
+            //{
+            //    jsonTablelist[i] = listBoxItem.ToString()!;
+            //    i++;
+            //}
 
 
-            string json_data = JsonSerializer.Serialize(jsonplayerlist); //this creates ["aaaa","ccccc","vbbdfdf"]
-            string json_data_tables = JsonSerializer.Serialize(jsonTablelist); //this creates ["aaaa","ccccc","vbbdfdf"]
-            
-            json_data = "{ \n" + 
-                            " \"playernames\":" + json_data + ",\n" +
-                            " \"tables\":" + json_data_tables+" \n}";
+            //string json_data = JsonConvert.SerializeObject(jsonplayerlist); //this creates ["aaaa","ccccc","vbbdfdf"]
+            //string json_data_tables = JsonConvert.SerializeObject(jsonTablelist); //this creates ["aaaa","ccccc","vbbdfdf"]
 
+
+            string json_players = JsonConvert.SerializeObject(this.game.player_list);
+            string json_data_tables = JsonConvert.SerializeObject(this.game.table_list);
+
+            string json_data = "{ " +
+                            " \"playernames\":" + json_players + "," +
+                            " \"tables\":" + json_data_tables + " }";
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "JSON File|*.json";
@@ -421,5 +424,33 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void label1_Click(object sender, EventArgs e) { }
 
+        private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog()
+            {
+                FileName = "Select a JSON file",
+                Filter = "JSON files (*.json)|*.json",
+                Title = "Open JSON file"
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+               
+                string filePath = openFileDialog1.FileName;
+                if(filePath != "")
+                {
+                   
+                    string str = File.ReadAllText(filePath);
+                    Dictionary<string, List<object>> ret = JsonConvert.DeserializeObject<Dictionary<string, List<object>>>(str)!;
+
+                }
+                
+                
+            }
+
+
+            
+        }
     }
 }
