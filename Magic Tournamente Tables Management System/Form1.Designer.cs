@@ -48,6 +48,10 @@
             this.buttonEditPlayer = new System.Windows.Forms.Button();
             this.buttonEditTable = new System.Windows.Forms.Button();
             this.dataGridViewMatching = new System.Windows.Forms.DataGridView();
+            this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WonRound = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TieWon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelRound = new System.Windows.Forms.Label();
             this.labelCurrentRound = new System.Windows.Forms.Label();
             this.buttonNextRound = new System.Windows.Forms.Button();
@@ -55,15 +59,11 @@
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveTODOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openGameTODOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelScore = new System.Windows.Forms.Label();
-            this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WonRound = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TieWon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRanking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatching)).BeginInit();
             this.menuBar.SuspendLayout();
@@ -275,6 +275,26 @@
             this.dataGridViewMatching.TabIndex = 14;
             this.dataGridViewMatching.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMatching_CellContentClick);
             // 
+            // PlayerAssign
+            // 
+            this.PlayerAssign.HeaderText = "Player";
+            this.PlayerAssign.Name = "PlayerAssign";
+            // 
+            // TableAssign
+            // 
+            this.TableAssign.HeaderText = "Table";
+            this.TableAssign.Name = "TableAssign";
+            // 
+            // WonRound
+            // 
+            this.WonRound.HeaderText = "Won Round";
+            this.WonRound.Name = "WonRound";
+            // 
+            // TieWon
+            // 
+            this.TieWon.HeaderText = "Tie";
+            this.TieWon.Name = "TieWon";
+            // 
             // labelRound
             // 
             this.labelRound.AutoSize = true;
@@ -333,7 +353,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
-            this.saveTODOToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.openGameTODOToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -347,12 +367,12 @@
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
-            // saveTODOToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.saveTODOToolStripMenuItem.Name = "saveTODOToolStripMenuItem";
-            this.saveTODOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveTODOToolStripMenuItem.Text = "Save Game (TODO)";
-            this.saveTODOToolStripMenuItem.Click += new System.EventHandler(this.saveTODOToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save Game";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openGameTODOToolStripMenuItem
             // 
@@ -387,26 +407,6 @@
             this.labelScore.Size = new System.Drawing.Size(73, 21);
             this.labelScore.TabIndex = 21;
             this.labelScore.Text = "Ranking";
-            // 
-            // PlayerAssign
-            // 
-            this.PlayerAssign.HeaderText = "Player";
-            this.PlayerAssign.Name = "PlayerAssign";
-            // 
-            // TableAssign
-            // 
-            this.TableAssign.HeaderText = "Table";
-            this.TableAssign.Name = "TableAssign";
-            // 
-            // WonRound
-            // 
-            this.WonRound.HeaderText = "Won Round";
-            this.WonRound.Name = "WonRound";
-            // 
-            // TieWon
-            // 
-            this.TieWon.HeaderText = "Tie";
-            this.TieWon.Name = "TieWon";
             // 
             // Form1
             // 
@@ -472,7 +472,7 @@
         private MenuStrip menuBar;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem newGameToolStripMenuItem;
-        private ToolStripMenuItem saveTODOToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem openGameTODOToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem1;

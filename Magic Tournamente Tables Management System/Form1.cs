@@ -14,7 +14,6 @@ namespace Magic_Tournamente_Tables_Management_System
         public Form1()
         {
             InitializeComponent();
-            dataGridViewMatching.CellContentClick += dataGridViewMatching_CellContentClick;
             this.game = new Game(0);
             setTitleWithVersion();
         }
@@ -89,12 +88,34 @@ namespace Magic_Tournamente_Tables_Management_System
 
         }
 
-        private void saveTODOToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            string json_players = JsonSerializer.Serialize(this.game.player_list);
-            string json_tables= JsonSerializer.Serialize(this.game.table_list);
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var jsonplayerlist = new String[listBoxPlayers.Items.Count];
+            int i = 0;
 
-            string json_data = "[" + json_players + "," + json_tables + "]";
+            foreach (var listBoxItem in listBoxPlayers.Items)
+            {
+                jsonplayerlist[i] = listBoxItem.ToString();
+                i++;
+            }
+
+            var jsonTablelist = new String[listBoxTables.Items.Count];
+            i = 0;
+
+            foreach (var listBoxItem in listBoxTables.Items)
+            {
+                jsonTablelist[i] = listBoxItem.ToString();
+                i++;
+            }
+
+
+            string json_data = JsonSerializer.Serialize(jsonplayerlist); //this creates ["aaaa","ccccc","vbbdfdf"]
+            string json_data_tables = JsonSerializer.Serialize(jsonTablelist); //this creates ["aaaa","ccccc","vbbdfdf"]
+            
+            json_data = "{ \n" + 
+                            " \"playernames\":" + json_data + ",\n" +
+                            " \"tables\":" + json_data_tables+" \n}";
+
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "JSON File|*.json";
