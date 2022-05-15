@@ -16,6 +16,9 @@ namespace Magic_Tournamente_Tables_Management_System
         public const int TIE_POINTS = 1;
         public const int LOSER_POINTS = 0;
         public const int BUY_POINTS = 3;
+        public const int FIRST_MAX_BUY_THRESHOLD = 1;   
+        public const int SECOND_MAX_BUY_THRESHOLD = 2; 
+
 
 
         public int total_rounds;
@@ -23,7 +26,6 @@ namespace Magic_Tournamente_Tables_Management_System
         public bool game_started;
         public List<Table> table_list;
         public List<Player> player_list;
-        public int total_players;
         public int total_tables;
 
         public Game(int total_rounds)
@@ -33,7 +35,6 @@ namespace Magic_Tournamente_Tables_Management_System
             this.game_started = false;
             this.table_list = new List<Table>();
             this.player_list = new List<Player>();
-            this.total_players = 0;
             this.total_tables = 0;
         }
     }

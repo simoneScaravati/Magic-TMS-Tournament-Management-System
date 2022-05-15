@@ -2,7 +2,7 @@ using static Magic_Tournamente_Tables_Management_System.version;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
-
+using System.ComponentModel;
 
 namespace Magic_Tournamente_Tables_Management_System
 {
@@ -164,11 +164,7 @@ namespace Magic_Tournamente_Tables_Management_System
             {
                 //check players
                 int p = Convert.ToInt32(listBoxPlayers.Items.Count.ToString());
-                if (p > 0)
-                {
-                    this.game.total_players = p;
-                }
-                else
+                if (p <= 0)
                 {
                     MessageBox.Show("Too few players");
                     return;
@@ -178,7 +174,7 @@ namespace Magic_Tournamente_Tables_Management_System
                 int t = Convert.ToInt32(listBoxTables.Items.Count.ToString());
                 if (t > 0)
                 {
-                    UpdateTotalTables();
+                    UpdateGameTotalTables();
                 }
                 else
                 {
@@ -197,9 +193,9 @@ namespace Magic_Tournamente_Tables_Management_System
 
         }
 
-        private void UpdateTotalTables()
+        private void UpdateGameTotalTables()
         {
-            int total_players = this.game.total_players;
+            int total_players = this.game.player_list.Count;
             int diff = total_players / Game.PLAYERS_PER_TABLE;
             int tables = (total_players - diff) / Game.EXTRA_TABLE_PLAYERS;
             this.game.total_tables = tables;
@@ -226,7 +222,7 @@ namespace Magic_Tournamente_Tables_Management_System
                     int n = listCopy.Count;
                     int table_counter = 0;
                     List<Table> t = this.game.table_list; //pointer for refactoring
-                    UpdateTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
+                    UpdateGameTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
                     while (table_counter < this.game.total_tables)
                     {
                         if (n >= Game.PLAYERS_PER_TABLE)
@@ -276,20 +272,110 @@ namespace Magic_Tournamente_Tables_Management_System
                 else
                 {
                     //middle rounds
+                    int retry_sampling = this.game.player_list.Count;
+                    bool buy_assignment_ok = false;
+
+                    List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list once
+                    ShufflePlayers(listCopy); //randomize it --> in retry loop we will shift that
+                    List<Player> listCopyBackup = new List<Player>(listCopy); //keep the first randomized list
+
+
+                    for (int k = 0; k < retry_sampling; k++)
+                    {
+                        listCopy.Clear();
+                        listCopy = new List<Player>(listCopyBackup);
+                        listCopyBackup = RotateList(listCopyBackup); //rotate list for next iteration
+
+                        int n = listCopy.Count;
+                        int table_counter = 0;
+
+                        //clear every player list of tables each round
+                        foreach(Table table in this.game.table_list)
+                        {
+                            table.players.Clear(); 
+                        }
+                        
+                        List<Table> t = this.game.table_list; //pointer for refactoring
+                        UpdateGameTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
+                        while (table_counter < this.game.total_tables)
+                        {
+                            if (n >= Game.PLAYERS_PER_TABLE)
+                            {
+                                for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
+                                {
+                                    t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                                    listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                                }
+
+                                n -= Game.PLAYERS_PER_TABLE;
+                                table_counter++;
+
+                            }
+                            if (n == Game.EXTRA_TABLE_PLAYERS)
+                            {
+                                for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
+                                {
+                                    t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                                    listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                                }
+
+                                n -= Game.EXTRA_TABLE_PLAYERS;
+                                table_counter++;
+                            }
+
+                        }
+
+                        bool has_buy = false;
+
+                        //buy counters --> check in middle rounds if someone had already buy points (retry)
+                        foreach (Player p in listCopy)
+                        {
+                            //every remaining players has already a buy?
+                            if (p.won_buy_count >= Game.FIRST_MAX_BUY_THRESHOLD)
+                            {
+                                has_buy = true;
+                                break;
+                            }
+                        }
+
+                        if (has_buy == false) //if nobody has buy, it's ok, assign that
+                        {
+                            foreach (Player p in listCopy)
+                            {
+                                int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                                this.game.player_list[i].won_buy_count++;
+                                this.game.player_list[i].score += Game.BUY_POINTS;
+                            }
+
+                            buy_assignment_ok = true;
+                            break; //exit for loop
+                        }
+                        //else --> retry loop
+
+                    }
+
+
+                    //if every player has a buy point, then accept a second buy point
+                    if (buy_assignment_ok == false)
+                    {
+                        //TODO
+                    }
+
+
                 }
 
-                /*update matching datagrid matching --> check before if matching is ok*/
-                UpdateMatching();
-
-                /* update ranking grid */
-                UpdateRanking();
 
                 if (this.game.current_round != this.game.total_rounds)
                 {
+                    /*update matching datagrid matching --> check before if matching is ok*/
+                    UpdateMatching();
+
                     this.game.current_round++;
                     UpdateRoundsText();
                 }
-                    
+
+                /* update ranking grid */
+                UpdateRanking();
 
 
             }
@@ -299,6 +385,16 @@ namespace Magic_Tournamente_Tables_Management_System
             }
            
 
+        }
+
+        private List<Player> RotateList(List<Player> listCopy)
+        {
+            //note this could be faster with linked list
+            Player first = listCopy[0];
+            listCopy.RemoveAt(0);
+            listCopy.Add(first);
+
+            return listCopy;
         }
 
         private void UpdateRanking()
@@ -374,11 +470,16 @@ namespace Magic_Tournamente_Tables_Management_System
                 }
             }
 
+            //automatic sort for Score
+            dataGridViewRanking.Sort(dataGridViewRanking.Columns["Score"], ListSortDirection.Descending);
+
+
         }
 
         private void UpdateMatching()
         {
             dataGridViewMatching.Rows.Clear();
+            dataGridViewMatching.Refresh();
 
             foreach (Table t in this.game.table_list)
             {
