@@ -272,6 +272,7 @@
             this.TieWon});
             this.dataGridViewMatching.Location = new System.Drawing.Point(586, 83);
             this.dataGridViewMatching.Name = "dataGridViewMatching";
+            this.dataGridViewMatching.ReadOnly = true;
             this.dataGridViewMatching.RowTemplate.Height = 25;
             this.dataGridViewMatching.Size = new System.Drawing.Size(603, 395);
             this.dataGridViewMatching.TabIndex = 14;
@@ -281,21 +282,29 @@
             // 
             this.PlayerAssign.HeaderText = "Player";
             this.PlayerAssign.Name = "PlayerAssign";
+            this.PlayerAssign.ReadOnly = true;
             // 
             // TableAssign
             // 
             this.TableAssign.HeaderText = "Table";
             this.TableAssign.Name = "TableAssign";
+            this.TableAssign.ReadOnly = true;
             // 
             // WonRound
             // 
+            this.WonRound.FalseValue = "false";
             this.WonRound.HeaderText = "Won Round";
             this.WonRound.Name = "WonRound";
+            this.WonRound.ReadOnly = true;
+            this.WonRound.TrueValue = "true";
             // 
             // TieWon
             // 
+            this.TieWon.FalseValue = "false";
             this.TieWon.HeaderText = "Tie";
             this.TieWon.Name = "TieWon";
+            this.TieWon.ReadOnly = true;
+            this.TieWon.TrueValue = "true";
             // 
             // labelRound
             // 
