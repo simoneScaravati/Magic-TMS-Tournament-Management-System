@@ -278,15 +278,18 @@ namespace Magic_Tournamente_Tables_Management_System
                     //middle rounds
                 }
 
-                /* TODO update matching datagrid */
+                /*update matching datagrid matching --> check before if matching is ok*/
                 UpdateMatching();
 
-                /* TODO update ranking grid */
+                /* update ranking grid */
                 UpdateRanking();
 
-                //do something
-                this.game.current_round++;
-                UpdateRoundsText();
+                if (this.game.current_round != this.game.total_rounds)
+                {
+                    this.game.current_round++;
+                    UpdateRoundsText();
+                }
+                    
 
 
             }
@@ -375,6 +378,8 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void UpdateMatching()
         {
+            dataGridViewMatching.Rows.Clear();
+
             foreach (Table t in this.game.table_list)
             {
                 foreach(Player p in t.players)
