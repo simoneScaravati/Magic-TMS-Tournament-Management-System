@@ -54,11 +54,25 @@ namespace Magic_Tournamente_Tables_Management_System
         
 
         private void buttonRemovePlayer_Click(object sender, EventArgs e)
-        { 
+        {
+            if (listBoxPlayers.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Player first!");
+                return;
+            }
+
             this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
             listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
             listBoxPlayers.Refresh();
         }
+
+        private void buttonRemoveAllPlayer_Click(object sender, EventArgs e)
+        {
+            this.game.player_list.Clear();
+            listBoxPlayers.Items.Clear();
+            listBoxPlayers.Refresh();
+        }
+
 
         private void buttonAddTable_Click(object sender, EventArgs e)
         {
@@ -78,10 +92,25 @@ namespace Magic_Tournamente_Tables_Management_System
 
         private void buttonRemoveTable_Click(object sender, EventArgs e)
         {
+            if (listBoxTables.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Table first!");
+                return;
+            }
+
             this.game.table_list.RemoveAll(t => t.id == listBoxTables.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
             listBoxTables.Items.Remove(listBoxTables.SelectedItem);
             listBoxTables.Refresh();
         }
+
+        private void buttonRemoveAllTable_Click(object sender, EventArgs e)
+        {
+            this.game.table_list.Clear();
+            listBoxTables.Items.Clear();
+            listBoxTables.Refresh();
+        }
+
+        
 
         private void dataGridViewMatching_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -89,30 +118,7 @@ namespace Magic_Tournamente_Tables_Management_System
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var jsonplayerlist = new String[listBoxPlayers.Items.Count];
-            //int i = 0;
-
-            //foreach (var listBoxItem in listBoxPlayers.Items)
-            //{
-            //    jsonplayerlist[i] = listBoxItem.ToString()!;
-            //    i++;
-            //}
-
-            //var jsonTablelist = new String[listBoxTables.Items.Count];
-            //i = 0;
-
-            //foreach (var listBoxItem in listBoxTables.Items)
-            //{
-            //    jsonTablelist[i] = listBoxItem.ToString()!;
-            //    i++;
-            //}
-
-
-            //string json_data = JsonConvert.SerializeObject(jsonplayerlist); //this creates ["aaaa","ccccc","vbbdfdf"]
-            //string json_data_tables = JsonConvert.SerializeObject(jsonTablelist); //this creates ["aaaa","ccccc","vbbdfdf"]
-
-
+        { 
             string json_players = JsonConvert.SerializeObject(this.game.player_list);
             string json_data_tables = JsonConvert.SerializeObject(this.game.table_list);
 
@@ -144,7 +150,6 @@ namespace Magic_Tournamente_Tables_Management_System
             }
 
             UpdateRoundsText();
-            
 
         }
 
@@ -260,29 +265,28 @@ namespace Magic_Tournamente_Tables_Management_System
                     }
 
 
-                    //table matching will look in every table player list
-
-                    //ranking will look at every player
-
                 }
                 else if (this.game.current_round == this.game.total_rounds)
                 {
-                    //last round
+                    //last round --> DO NOTHING! 
+                    buttonNextRound.Enabled = false; //disable the button, game over
+                    MessageBox.Show("Game Over!");
+
                 }
                 else
                 {
                     //middle rounds
                 }
 
-                //do something
-                this.game.current_round++;
-                UpdateRoundsText();
-
                 /* TODO update matching datagrid */
                 UpdateMatching();
 
                 /* TODO update ranking grid */
                 UpdateRanking();
+
+                //do something
+                this.game.current_round++;
+                UpdateRoundsText();
 
 
             }
@@ -304,13 +308,13 @@ namespace Magic_Tournamente_Tables_Management_System
                     foreach(Player p in t.players)
                     {
                         String searchValue = p.name;
-                        int rowIndex = -1;
                         foreach (DataGridViewRow row in dataGridViewMatching.Rows)
                         {
-                            if (row.Cells["Player"].Value.Equals(searchValue))
+                            if (row.Cells["PlayerAssign"].Value.Equals(searchValue))
                             {
-                                rowIndex = row.Index;
-                                DataGridViewCheckBoxCell chkcheckingWon = (DataGridViewCheckBoxCell)row.Cells["WonRound"].Value;
+                                
+                                DataGridViewCheckBoxCell? chkcheckingWon = row.Cells["WonRound"] as DataGridViewCheckBoxCell;
+
                                 if (Convert.ToBoolean(chkcheckingWon.Value) == true)
                                 {
                                     if(t.players.Count == Game.PLAYERS_PER_TABLE)
@@ -329,7 +333,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
                                 }
 
-                                DataGridViewCheckBoxCell chkcheckingTie = (DataGridViewCheckBoxCell)row.Cells["TieWon"].Value;
+                                DataGridViewCheckBoxCell? chkcheckingTie = row.Cells["TieWon"] as DataGridViewCheckBoxCell;
                                 if (Convert.ToBoolean(chkcheckingTie.Value) == true)
                                 {
                                     int i = this.game.player_list.FindIndex(x => x.name == p.name);
@@ -385,7 +389,7 @@ namespace Magic_Tournamente_Tables_Management_System
                         row.Cells["PlayerAssign"].Value = p.name;
                         row.Cells["TableAssign"].Value = t.id;
                         row.Cells["WonRound"].Value = false;
-                        row.Cells["PairWon"].Value = false;
+                        row.Cells["TieWon"].Value = false;
                         //row.Cells["BuyWon"].Value = false; //deprecated
                     }
                     catch (Exception ex)
@@ -441,8 +445,58 @@ namespace Magic_Tournamente_Tables_Management_System
                 if(filePath != "")
                 {
                    
-                    string str = File.ReadAllText(filePath);
-                    Dictionary<string, List<object>> ret = JsonConvert.DeserializeObject<Dictionary<string, List<object>>>(str)!;
+                    string string_json_file = File.ReadAllText(filePath);
+
+                    //get the players from json
+                    Dictionary<string, List<Player>> retPlayer = JsonConvert.DeserializeObject<Dictionary<string, List<Player>>>(string_json_file)!;
+                    if (retPlayer != null)
+                    {
+                        this.game.player_list.Clear();  //remove all players from game
+                        listBoxPlayers.Items.Clear();   //clear the listbox
+
+                        List<Player> list = new List<Player>();
+                        bool hasValue = retPlayer.TryGetValue("playernames", out list);
+                        if (hasValue)
+                        {
+                            foreach (Player p in list)
+                            { 
+                                listBoxPlayers.Items.Add(p.name);
+                                this.game.player_list.Add(p);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Key not present");
+                        }
+                    }
+
+                    //get the tables from json
+                    Dictionary<string, List<Table>> retTables = JsonConvert.DeserializeObject<Dictionary<string, List<Table>>>(string_json_file)!;
+
+                    if (retTables != null)
+                    {
+                        this.game.table_list.Clear();  //remove all players from game
+                        listBoxTables.Items.Clear();   //clear the listbox
+
+                        List<Table> list = new List<Table>();
+                        bool hasValue = retTables.TryGetValue("tables", out list);
+                        if (hasValue)
+                        {
+                            foreach (Table t in list)
+                            {
+                                listBoxTables.Items.Add(t.id);
+                                this.game.table_list.Add(t);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Key not present");
+                        }
+                    }
+
+
+
+
 
                 }
                 
@@ -452,5 +506,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
             
         }
+
+       
     }
 }

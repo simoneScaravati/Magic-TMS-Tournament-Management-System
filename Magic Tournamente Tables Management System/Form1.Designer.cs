@@ -45,8 +45,8 @@
             this.buttonRemoveTable = new System.Windows.Forms.Button();
             this.textBoxAddTable = new System.Windows.Forms.TextBox();
             this.buttonAddTable = new System.Windows.Forms.Button();
-            this.buttonEditPlayer = new System.Windows.Forms.Button();
-            this.buttonEditTable = new System.Windows.Forms.Button();
+            this.buttonRemoveAllPlayer = new System.Windows.Forms.Button();
+            this.buttonRemoveAllTable = new System.Windows.Forms.Button();
             this.dataGridViewMatching = new System.Windows.Forms.DataGridView();
             this.PlayerAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableAssign = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,25 +238,27 @@
             this.buttonAddTable.UseVisualStyleBackColor = false;
             this.buttonAddTable.Click += new System.EventHandler(this.buttonAddTable_Click);
             // 
-            // buttonEditPlayer
+            // buttonRemoveAllPlayer
             // 
-            this.buttonEditPlayer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonEditPlayer.Location = new System.Drawing.Point(12, 415);
-            this.buttonEditPlayer.Name = "buttonEditPlayer";
-            this.buttonEditPlayer.Size = new System.Drawing.Size(73, 63);
-            this.buttonEditPlayer.TabIndex = 12;
-            this.buttonEditPlayer.Text = "Edit Player";
-            this.buttonEditPlayer.UseVisualStyleBackColor = false;
+            this.buttonRemoveAllPlayer.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonRemoveAllPlayer.Location = new System.Drawing.Point(12, 415);
+            this.buttonRemoveAllPlayer.Name = "buttonRemoveAllPlayer";
+            this.buttonRemoveAllPlayer.Size = new System.Drawing.Size(73, 63);
+            this.buttonRemoveAllPlayer.TabIndex = 12;
+            this.buttonRemoveAllPlayer.Text = "Remove All";
+            this.buttonRemoveAllPlayer.UseVisualStyleBackColor = false;
+            this.buttonRemoveAllPlayer.Click += new System.EventHandler(this.buttonRemoveAllPlayer_Click);
             // 
-            // buttonEditTable
+            // buttonRemoveAllTable
             // 
-            this.buttonEditTable.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonEditTable.Location = new System.Drawing.Point(265, 415);
-            this.buttonEditTable.Name = "buttonEditTable";
-            this.buttonEditTable.Size = new System.Drawing.Size(92, 63);
-            this.buttonEditTable.TabIndex = 13;
-            this.buttonEditTable.Text = "Edit Table";
-            this.buttonEditTable.UseVisualStyleBackColor = false;
+            this.buttonRemoveAllTable.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonRemoveAllTable.Location = new System.Drawing.Point(265, 415);
+            this.buttonRemoveAllTable.Name = "buttonRemoveAllTable";
+            this.buttonRemoveAllTable.Size = new System.Drawing.Size(92, 63);
+            this.buttonRemoveAllTable.TabIndex = 13;
+            this.buttonRemoveAllTable.Text = "Remove All";
+            this.buttonRemoveAllTable.UseVisualStyleBackColor = false;
+            this.buttonRemoveAllTable.Click += new System.EventHandler(this.buttonRemoveAllTable_Click);
             // 
             // dataGridViewMatching
             // 
@@ -363,21 +365,21 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.saveToolStripMenuItem.Text = "Save Game";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadGameToolStripMenuItem
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -422,8 +424,8 @@
             this.Controls.Add(this.labelCurrentRound);
             this.Controls.Add(this.labelRound);
             this.Controls.Add(this.dataGridViewMatching);
-            this.Controls.Add(this.buttonEditTable);
-            this.Controls.Add(this.buttonEditPlayer);
+            this.Controls.Add(this.buttonRemoveAllTable);
+            this.Controls.Add(this.buttonRemoveAllPlayer);
             this.Controls.Add(this.buttonRemoveTable);
             this.Controls.Add(this.textBoxAddTable);
             this.Controls.Add(this.buttonAddTable);
@@ -463,8 +465,8 @@
         private Button buttonRemoveTable;
         private TextBox textBoxAddTable;
         private Button buttonAddTable;
-        private Button buttonEditPlayer;
-        private Button buttonEditTable;
+        private Button buttonRemoveAllPlayer;
+        private Button buttonRemoveAllTable;
         private DataGridView dataGridViewMatching;
         private Label labelRound;
         private Label labelCurrentRound;
