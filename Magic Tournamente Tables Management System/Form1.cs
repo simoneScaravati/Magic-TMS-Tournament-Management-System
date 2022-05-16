@@ -15,8 +15,6 @@ namespace Magic_Tournamente_Tables_Management_System
         {
             InitializeComponent();
             this.game = new Game(0);
-
-            //dataGridViewMatching.CellContentClick += new DataGridViewCellEventHandler(dataGridViewMatching_CellContentClick);
             setTitleWithVersion();
         }
 
@@ -118,7 +116,7 @@ namespace Magic_Tournamente_Tables_Management_System
         private void dataGridViewMatching_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Check to ensure that the row CheckBox is clicked.
-            if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+            if (e.RowIndex >= 0 && (e.ColumnIndex == 2 ))
             {
                 //Reference the GridView Row.
                 DataGridViewRow row = dataGridViewMatching.Rows[e.RowIndex];
@@ -127,25 +125,38 @@ namespace Magic_Tournamente_Tables_Management_System
                 if (chk.Value == chk.FalseValue || chk.Value == null)
                 {
                     chk.Value = chk.TrueValue;
+                    Convert.ToBoolean(row.Cells["WonRound"].Value);
                 }
+                else
                 {
                     chk.Value = chk.FalseValue;
+                    Convert.ToBoolean(row.Cells["WonRound"].Value);
                 }
 
             }
-            dataGridViewMatching.EndEdit();
 
-            ////Set the CheckBox selection.
-            //row.Cells["WonRound"].Value = !Convert.ToBoolean(row.Cells["WonRound"].EditedFormattedValue);
+            //Check to ensure that the row CheckBox is clicked.
+            if (e.RowIndex >= 0 && (e.ColumnIndex == 3))
+            {
+                //Reference the GridView Row.
+                DataGridViewRow row = dataGridViewMatching.Rows[e.RowIndex];
 
-            ////If CheckBox is checked, display Message Box.
-            //if (Convert.ToBoolean(row.Cells["WonRound"].Value))
-            //{
-            //    MessageBox.Show("Selected ID: " + row.Cells[0].Value);
-            //    row.Cells["WonRound"].Value = !Convert.ToBoolean(row.Cells["WonRound"].EditedFormattedValue);
-            //}
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["TieWon"];
+                if (chk.Value == chk.FalseValue || chk.Value == null)
+                {
+                    chk.Value = chk.TrueValue;
+                    Convert.ToBoolean(row.Cells["TieWon"].Value);
+                }
+                else
+                {
+                    chk.Value = chk.FalseValue;
+                    Convert.ToBoolean(row.Cells["TieWon"].Value);
+                }
 
-        
+            }
+
+
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,6 +407,12 @@ namespace Magic_Tournamente_Tables_Management_System
                 }
 
 
+                /* update ranking grid */
+                if (this.game.current_round != 0)
+                {
+                    UpdateRanking();
+                }
+
                 if (this.game.current_round != this.game.total_rounds)
                 {
                     /*update matching datagrid matching --> check before if matching is ok*/
@@ -405,8 +422,10 @@ namespace Magic_Tournamente_Tables_Management_System
                     UpdateRoundsText();
                 }
 
-                /* update ranking grid */
-                UpdateRanking();
+                if (this.game.current_round == 0)
+                {
+                    UpdateRanking();
+                }
 
 
             }
@@ -436,9 +455,12 @@ namespace Magic_Tournamente_Tables_Management_System
                         String searchValue = p.name;
                         foreach (DataGridViewRow row in dataGridViewMatching.Rows)
                         {
+                            
                             if (row.Cells["PlayerAssign"].Value.Equals(searchValue))
                             {
-                                if (Convert.ToBoolean(row.Cells["WonRound"].Value) == true)
+                                
+                                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells["WonRound"];
+                                if (Convert.ToBoolean(cell.Value))
                                 {
                                     if(t.players.Count == Game.PLAYERS_PER_TABLE)
                                     {
