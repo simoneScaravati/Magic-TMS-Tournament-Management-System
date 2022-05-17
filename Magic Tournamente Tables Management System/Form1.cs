@@ -478,8 +478,8 @@ namespace Magic_Tournamente_Tables_Management_System
 
                                 }
 
-                                DataGridViewCheckBoxCell? chkcheckingTie = row.Cells["TieWon"] as DataGridViewCheckBoxCell;
-                                if (Convert.ToBoolean(chkcheckingTie.Value) == true)
+                                DataGridViewCheckBoxCell cell2 = (DataGridViewCheckBoxCell)row.Cells["TieWon"];
+                                if (Convert.ToBoolean(cell2.Value))
                                 {
                                     int i = this.game.player_list.FindIndex(x => x.name == p.name);
                                     this.game.player_list[i].score += Game.TIE_POINTS;
