@@ -1,6 +1,3 @@
-using static Magic_Tournamente_Tables_Management_System.version;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.ComponentModel;
 
@@ -47,13 +44,14 @@ namespace Magic_Tournamente_Tables_Management_System
                 textBoxAddPlayer.Text = "";
                 listBoxPlayers.Items.Add(temp);
                 this.game.player_list.Add(new Player(temp, 0));
-            }else
+            }
+            else
             {
                 MessageBox.Show("Player box empty");
             }
         }
 
-        
+
 
         private void buttonRemovePlayer_Click(object sender, EventArgs e)
         {
@@ -116,7 +114,7 @@ namespace Magic_Tournamente_Tables_Management_System
         private void dataGridViewMatching_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Check to ensure that the row CheckBox is clicked.
-            if (e.RowIndex >= 0 && (e.ColumnIndex == 2 ))
+            if (e.RowIndex >= 0 && (e.ColumnIndex == 2))
             {
                 //Reference the GridView Row.
                 DataGridViewRow row = dataGridViewMatching.Rows[e.RowIndex];
@@ -160,7 +158,7 @@ namespace Magic_Tournamente_Tables_Management_System
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
+        {
             string json_players = JsonConvert.SerializeObject(this.game.player_list);
             string json_data_tables = JsonConvert.SerializeObject(this.game.table_list);
 
@@ -178,7 +176,7 @@ namespace Magic_Tournamente_Tables_Management_System
             {
                 File.WriteAllText(saveFileDialog1.FileName, json_data);
             }
-            
+
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,8 +199,8 @@ namespace Magic_Tournamente_Tables_Management_System
         }
 
         private void gameStart()
-        { 
-            if(!this.game.game_started)
+        {
+            if (!this.game.game_started)
             {
                 //check players
                 int p = Convert.ToInt32(listBoxPlayers.Items.Count.ToString());
@@ -227,11 +225,12 @@ namespace Magic_Tournamente_Tables_Management_System
                 //if everything is ok
                 this.game.current_round = 0;
                 this.game.game_started = true;
-            }else
+            }
+            else
             {
                 MessageBox.Show("Game already started, please restart the program");
             }
-            
+
 
         }
 
@@ -249,7 +248,7 @@ namespace Magic_Tournamente_Tables_Management_System
             if (!this.game.game_started)
             {
                 MessageBox.Show("Game not started!");
-                return ;
+                return;
             }
 
             //MessageBox Yes or No fure surance of points
@@ -298,7 +297,7 @@ namespace Magic_Tournamente_Tables_Management_System
                     {
                         int i = this.game.player_list.FindIndex(x => x.name == p.name);
                         this.game.player_list[i].won_buy_count++;
-                        this.game.player_list[i].score += Game.BUY_POINTS; 
+                        this.game.player_list[i].score += Game.BUY_POINTS;
                         // TODO check for next rounds to see if someone had already buy points (retry random?)
                     }
 
@@ -332,11 +331,11 @@ namespace Magic_Tournamente_Tables_Management_System
                         int table_counter = 0;
 
                         //clear every player list of tables each round
-                        foreach(Table table in this.game.table_list)
+                        foreach (Table table in this.game.table_list)
                         {
-                            table.players.Clear(); 
+                            table.players.Clear();
                         }
-                        
+
                         List<Table> t = this.game.table_list; //pointer for refactoring
                         UpdateGameTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
                         while (table_counter < this.game.total_tables)
@@ -422,14 +421,14 @@ namespace Magic_Tournamente_Tables_Management_System
                     UpdateRoundsText();
                 }
 
-                if (this.game.current_round == 0)
+                if (this.game.current_round == 1)
                 {
                     UpdateRanking();
                 }
 
 
             }
-           
+
 
         }
 
@@ -450,19 +449,19 @@ namespace Magic_Tournamente_Tables_Management_System
                 //if it's not the first round, interpret the datagrid view of matching
                 foreach (Table t in this.game.table_list)
                 {
-                    foreach(Player p in t.players)
+                    foreach (Player p in t.players)
                     {
                         String searchValue = p.name;
                         foreach (DataGridViewRow row in dataGridViewMatching.Rows)
                         {
-                            
+
                             if (row.Cells["PlayerAssign"].Value.Equals(searchValue))
                             {
-                                
+
                                 DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells["WonRound"];
                                 if (Convert.ToBoolean(cell.Value))
                                 {
-                                    if(t.players.Count == Game.PLAYERS_PER_TABLE)
+                                    if (t.players.Count == Game.PLAYERS_PER_TABLE)
                                     {
                                         int i = this.game.player_list.FindIndex(x => x.name == p.name);
                                         this.game.player_list[i].won_on_big_tables_count++;
@@ -489,9 +488,9 @@ namespace Magic_Tournamente_Tables_Management_System
                             }
                         }
                     }
-                    
+
                 }
-                    
+
             }
 
             dataGridViewRanking.Rows.Clear(); //every time cleans everything up, so if the players have changed it's ok
@@ -529,7 +528,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
             foreach (Table t in this.game.table_list)
             {
-                foreach(Player p in t.players)
+                foreach (Player p in t.players)
                 {
                     int rowId = dataGridViewMatching.Rows.Add();
 
@@ -546,10 +545,10 @@ namespace Magic_Tournamente_Tables_Management_System
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                
+
             }
-            
-            
+
+
         }
 
         private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -558,7 +557,7 @@ namespace Magic_Tournamente_Tables_Management_System
             DialogResult res = info.ShowDialog();  //wait for start execution
         }
 
-       
+
 
 
         //UNUSEFUL FUNCTIONS
@@ -588,11 +587,11 @@ namespace Magic_Tournamente_Tables_Management_System
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-               
+
                 string filePath = openFileDialog1.FileName;
-                if(filePath != "")
+                if (filePath != "")
                 {
-                   
+
                     string string_json_file = File.ReadAllText(filePath);
 
                     //get the players from json
@@ -607,7 +606,7 @@ namespace Magic_Tournamente_Tables_Management_System
                         if (hasValue)
                         {
                             foreach (Player p in list)
-                            { 
+                            {
                                 listBoxPlayers.Items.Add(p.name);
                                 this.game.player_list.Add(p);
                             }
@@ -647,12 +646,12 @@ namespace Magic_Tournamente_Tables_Management_System
 
 
                 }
-                
-                
+
+
             }
 
 
-            
+
         }
 
         private void textBoxAddPlayer_KeyDown(object sender, KeyEventArgs e)
@@ -663,7 +662,7 @@ namespace Magic_Tournamente_Tables_Management_System
                 e.Handled = true;
             }
 
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 e.Handled = true;
             }
@@ -675,7 +674,7 @@ namespace Magic_Tournamente_Tables_Management_System
             {
                 e.Handled = true;
             }
-            
+
         }
 
         private void textBoxAddPlayer_KeyUp(object sender, KeyEventArgs e)

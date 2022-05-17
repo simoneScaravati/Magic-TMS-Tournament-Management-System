@@ -322,7 +322,7 @@
             this.labelRound.Name = "labelRound";
             this.labelRound.Size = new System.Drawing.Size(180, 28);
             this.labelRound.TabIndex = 16;
-            this.labelRound.Text = "CURRENT ROUND:";
+            this.labelRound.Text = "Current Round:";
             this.labelRound.Click += new System.EventHandler(this.label2_Click);
             // 
             // labelCurrentRound
@@ -357,6 +357,7 @@
             // 
             this.menuBar.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.menuBar.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuBar.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.infoToolStripMenuItem});
@@ -436,8 +437,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1201, 806);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.menuBar);
@@ -458,6 +460,7 @@
             this.Controls.Add(this.listBoxTables);
             this.Controls.Add(this.labelPlayers);
             this.Controls.Add(this.listBoxPlayers);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuBar;
