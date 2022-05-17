@@ -178,7 +178,7 @@
             // buttonAddPlayer
             // 
             this.buttonAddPlayer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAddPlayer.Location = new System.Drawing.Point(13, 335);
+            this.buttonAddPlayer.Location = new System.Drawing.Point(13, 374);
             this.buttonAddPlayer.Name = "buttonAddPlayer";
             this.buttonAddPlayer.Size = new System.Drawing.Size(226, 35);
             this.buttonAddPlayer.TabIndex = 6;
@@ -188,12 +188,14 @@
             // 
             // textBoxAddPlayer
             // 
-            this.textBoxAddPlayer.Location = new System.Drawing.Point(12, 384);
+            this.textBoxAddPlayer.Location = new System.Drawing.Point(12, 335);
             this.textBoxAddPlayer.Name = "textBoxAddPlayer";
-            this.textBoxAddPlayer.PlaceholderText = "(default PlayerXXX)";
+            this.textBoxAddPlayer.PlaceholderText = "PlayerXXX";
             this.textBoxAddPlayer.Size = new System.Drawing.Size(227, 25);
             this.textBoxAddPlayer.TabIndex = 7;
-            this.textBoxAddPlayer.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxAddPlayer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAddPlayer_KeyDown);
+            this.textBoxAddPlayer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAddPlayer_KeyPress);
+            this.textBoxAddPlayer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxAddPlayer_KeyUp);
             // 
             // buttonRemovePlayer
             // 
@@ -221,16 +223,19 @@
             // 
             // textBoxAddTable
             // 
-            this.textBoxAddTable.Location = new System.Drawing.Point(265, 384);
+            this.textBoxAddTable.Location = new System.Drawing.Point(265, 335);
             this.textBoxAddTable.Name = "textBoxAddTable";
-            this.textBoxAddTable.PlaceholderText = "(default TableXXX)";
+            this.textBoxAddTable.PlaceholderText = "TableXXX";
             this.textBoxAddTable.Size = new System.Drawing.Size(230, 25);
             this.textBoxAddTable.TabIndex = 10;
+            this.textBoxAddTable.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAddTable_KeyDown);
+            this.textBoxAddTable.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAddTable_KeyPress);
+            this.textBoxAddTable.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxAddTable_KeyUp);
             // 
             // buttonAddTable
             // 
             this.buttonAddTable.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAddTable.Location = new System.Drawing.Point(265, 335);
+            this.buttonAddTable.Location = new System.Drawing.Point(265, 374);
             this.buttonAddTable.Name = "buttonAddTable";
             this.buttonAddTable.Size = new System.Drawing.Size(228, 35);
             this.buttonAddTable.TabIndex = 9;
@@ -374,21 +379,25 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.saveToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.saveToolStripMenuItem.Text = "Save Game";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadGameToolStripMenuItem
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.loadGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -404,7 +413,8 @@
             // infoToolStripMenuItem1
             // 
             this.infoToolStripMenuItem1.Name = "infoToolStripMenuItem1";
-            this.infoToolStripMenuItem1.Size = new System.Drawing.Size(95, 22);
+            this.infoToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.infoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.infoToolStripMenuItem1.Text = "Info";
             this.infoToolStripMenuItem1.Click += new System.EventHandler(this.infoToolStripMenuItem1_Click);
             // 

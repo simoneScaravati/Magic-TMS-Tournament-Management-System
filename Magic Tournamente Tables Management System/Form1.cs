@@ -564,7 +564,6 @@ namespace Magic_Tournamente_Tables_Management_System
         //UNUSEFUL FUNCTIONS
         private void label1_Click_1(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -656,6 +655,65 @@ namespace Magic_Tournamente_Tables_Management_System
             
         }
 
-       
+        private void textBoxAddPlayer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddPlayer_Click(this, new EventArgs());
+                e.Handled = true;
+            }
+
+            if(e.KeyCode == Keys.Escape)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAddPlayer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+            }
+            
+        }
+
+        private void textBoxAddPlayer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAddTable_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddTable_Click(this, new EventArgs());
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAddTable_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAddTable_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
