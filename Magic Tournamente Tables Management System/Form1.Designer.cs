@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBoxPlayers = new System.Windows.Forms.ListBox();
             this.labelPlayers = new System.Windows.Forms.Label();
             this.labelTables = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.listBoxPlayers.FormattingEnabled = true;
             this.listBoxPlayers.HorizontalScrollbar = true;
             this.listBoxPlayers.ItemHeight = 21;
-            this.listBoxPlayers.Location = new System.Drawing.Point(13, 50);
+            this.listBoxPlayers.Location = new System.Drawing.Point(13, 70);
             this.listBoxPlayers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBoxPlayers.Name = "listBoxPlayers";
             this.listBoxPlayers.Size = new System.Drawing.Size(226, 277);
@@ -87,7 +88,7 @@
             this.labelPlayers.AutoSize = true;
             this.labelPlayers.BackColor = System.Drawing.Color.Transparent;
             this.labelPlayers.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelPlayers.Location = new System.Drawing.Point(13, 25);
+            this.labelPlayers.Location = new System.Drawing.Point(13, 45);
             this.labelPlayers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPlayers.Name = "labelPlayers";
             this.labelPlayers.Size = new System.Drawing.Size(72, 20);
@@ -100,7 +101,7 @@
             this.labelTables.AutoSize = true;
             this.labelTables.BackColor = System.Drawing.Color.Transparent;
             this.labelTables.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelTables.Location = new System.Drawing.Point(265, 25);
+            this.labelTables.Location = new System.Drawing.Point(265, 45);
             this.labelTables.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTables.Name = "labelTables";
             this.labelTables.Size = new System.Drawing.Size(63, 20);
@@ -113,7 +114,7 @@
             this.listBoxTables.FormattingEnabled = true;
             this.listBoxTables.HorizontalScrollbar = true;
             this.listBoxTables.ItemHeight = 21;
-            this.listBoxTables.Location = new System.Drawing.Point(265, 50);
+            this.listBoxTables.Location = new System.Drawing.Point(265, 70);
             this.listBoxTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBoxTables.Name = "listBoxTables";
             this.listBoxTables.Size = new System.Drawing.Size(230, 277);
@@ -178,7 +179,7 @@
             // buttonAddPlayer
             // 
             this.buttonAddPlayer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAddPlayer.Location = new System.Drawing.Point(13, 374);
+            this.buttonAddPlayer.Location = new System.Drawing.Point(13, 394);
             this.buttonAddPlayer.Name = "buttonAddPlayer";
             this.buttonAddPlayer.Size = new System.Drawing.Size(226, 35);
             this.buttonAddPlayer.TabIndex = 6;
@@ -188,7 +189,7 @@
             // 
             // textBoxAddPlayer
             // 
-            this.textBoxAddPlayer.Location = new System.Drawing.Point(12, 335);
+            this.textBoxAddPlayer.Location = new System.Drawing.Point(12, 355);
             this.textBoxAddPlayer.Name = "textBoxAddPlayer";
             this.textBoxAddPlayer.PlaceholderText = "PlayerXXX";
             this.textBoxAddPlayer.Size = new System.Drawing.Size(227, 25);
@@ -202,7 +203,7 @@
             this.buttonRemovePlayer.BackColor = System.Drawing.Color.IndianRed;
             this.buttonRemovePlayer.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.buttonRemovePlayer.FlatAppearance.BorderSize = 10;
-            this.buttonRemovePlayer.Location = new System.Drawing.Point(91, 415);
+            this.buttonRemovePlayer.Location = new System.Drawing.Point(91, 435);
             this.buttonRemovePlayer.Name = "buttonRemovePlayer";
             this.buttonRemovePlayer.Size = new System.Drawing.Size(148, 63);
             this.buttonRemovePlayer.TabIndex = 8;
@@ -213,7 +214,7 @@
             // buttonRemoveTable
             // 
             this.buttonRemoveTable.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonRemoveTable.Location = new System.Drawing.Point(363, 413);
+            this.buttonRemoveTable.Location = new System.Drawing.Point(363, 433);
             this.buttonRemoveTable.Name = "buttonRemoveTable";
             this.buttonRemoveTable.Size = new System.Drawing.Size(132, 65);
             this.buttonRemoveTable.TabIndex = 11;
@@ -223,7 +224,7 @@
             // 
             // textBoxAddTable
             // 
-            this.textBoxAddTable.Location = new System.Drawing.Point(265, 335);
+            this.textBoxAddTable.Location = new System.Drawing.Point(265, 355);
             this.textBoxAddTable.Name = "textBoxAddTable";
             this.textBoxAddTable.PlaceholderText = "TableXXX";
             this.textBoxAddTable.Size = new System.Drawing.Size(230, 25);
@@ -235,7 +236,7 @@
             // buttonAddTable
             // 
             this.buttonAddTable.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAddTable.Location = new System.Drawing.Point(265, 374);
+            this.buttonAddTable.Location = new System.Drawing.Point(265, 394);
             this.buttonAddTable.Name = "buttonAddTable";
             this.buttonAddTable.Size = new System.Drawing.Size(228, 35);
             this.buttonAddTable.TabIndex = 9;
@@ -246,7 +247,7 @@
             // buttonRemoveAllPlayer
             // 
             this.buttonRemoveAllPlayer.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonRemoveAllPlayer.Location = new System.Drawing.Point(12, 415);
+            this.buttonRemoveAllPlayer.Location = new System.Drawing.Point(12, 435);
             this.buttonRemoveAllPlayer.Name = "buttonRemoveAllPlayer";
             this.buttonRemoveAllPlayer.Size = new System.Drawing.Size(73, 63);
             this.buttonRemoveAllPlayer.TabIndex = 12;
@@ -257,7 +258,7 @@
             // buttonRemoveAllTable
             // 
             this.buttonRemoveAllTable.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonRemoveAllTable.Location = new System.Drawing.Point(265, 415);
+            this.buttonRemoveAllTable.Location = new System.Drawing.Point(265, 435);
             this.buttonRemoveAllTable.Name = "buttonRemoveAllTable";
             this.buttonRemoveAllTable.Size = new System.Drawing.Size(92, 63);
             this.buttonRemoveAllTable.TabIndex = 13;
@@ -275,7 +276,7 @@
             this.TableAssign,
             this.WonRound,
             this.TieWon});
-            this.dataGridViewMatching.Location = new System.Drawing.Point(586, 83);
+            this.dataGridViewMatching.Location = new System.Drawing.Point(586, 103);
             this.dataGridViewMatching.Name = "dataGridViewMatching";
             this.dataGridViewMatching.ReadOnly = true;
             this.dataGridViewMatching.RowTemplate.Height = 25;
@@ -317,7 +318,7 @@
             this.labelRound.BackColor = System.Drawing.Color.Transparent;
             this.labelRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelRound.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelRound.Location = new System.Drawing.Point(586, 41);
+            this.labelRound.Location = new System.Drawing.Point(646, 50);
             this.labelRound.Name = "labelRound";
             this.labelRound.Size = new System.Drawing.Size(180, 28);
             this.labelRound.TabIndex = 16;
@@ -330,7 +331,7 @@
             this.labelCurrentRound.BackColor = System.Drawing.Color.Transparent;
             this.labelCurrentRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCurrentRound.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelCurrentRound.Location = new System.Drawing.Point(772, 41);
+            this.labelCurrentRound.Location = new System.Drawing.Point(832, 50);
             this.labelCurrentRound.Name = "labelCurrentRound";
             this.labelCurrentRound.Size = new System.Drawing.Size(48, 28);
             this.labelCurrentRound.TabIndex = 17;
@@ -339,9 +340,9 @@
             // buttonNextRound
             // 
             this.buttonNextRound.BackColor = System.Drawing.Color.Transparent;
-            this.buttonNextRound.Location = new System.Drawing.Point(848, 36);
+            this.buttonNextRound.Location = new System.Drawing.Point(915, 45);
             this.buttonNextRound.Name = "buttonNextRound";
-            this.buttonNextRound.Size = new System.Drawing.Size(112, 44);
+            this.buttonNextRound.Size = new System.Drawing.Size(201, 44);
             this.buttonNextRound.TabIndex = 18;
             this.buttonNextRound.Text = "Next Round";
             this.buttonNextRound.UseVisualStyleBackColor = false;
@@ -355,13 +356,14 @@
             // menuBar
             // 
             this.menuBar.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.menuBar.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.infoToolStripMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
             this.menuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuBar.Size = new System.Drawing.Size(1201, 24);
+            this.menuBar.Size = new System.Drawing.Size(1201, 28);
             this.menuBar.TabIndex = 20;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -373,14 +375,14 @@
             this.loadGameToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
@@ -389,7 +391,7 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.saveToolStripMenuItem.Text = "Save Game";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -397,7 +399,7 @@
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -407,14 +409,14 @@
             this.infoToolStripMenuItem1});
             this.infoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.infoToolStripMenuItem.Text = "Info";
             // 
             // infoToolStripMenuItem1
             // 
             this.infoToolStripMenuItem1.Name = "infoToolStripMenuItem1";
             this.infoToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.infoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.infoToolStripMenuItem1.Size = new System.Drawing.Size(177, 24);
             this.infoToolStripMenuItem1.Text = "Info";
             this.infoToolStripMenuItem1.Click += new System.EventHandler(this.infoToolStripMenuItem1_Click);
             // 
@@ -457,6 +459,7 @@
             this.Controls.Add(this.labelPlayers);
             this.Controls.Add(this.listBoxPlayers);
             this.Font = new System.Drawing.Font("Cascadia Code", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuBar;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
