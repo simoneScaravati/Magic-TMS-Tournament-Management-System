@@ -42,6 +42,13 @@ namespace Magic_Tournamente_Tables_Management_System
             if (temp != "")
             {
                 textBoxAddPlayer.Text = "";
+
+                if (listBoxPlayers.Items.Contains(temp))
+                {
+                    MessageBox.Show("Player already present");
+                    return;
+                }
+
                 listBoxPlayers.Items.Add(temp);
                 this.game.player_list.Add(new Player(temp, 0));
             }
@@ -81,6 +88,15 @@ namespace Magic_Tournamente_Tables_Management_System
             if (temp != "")
             {
                 textBoxAddTable.Text = "";
+
+
+                if (listBoxTables.Items.Contains(temp))
+                {
+                    MessageBox.Show("Table already present");
+                    return;
+                }
+
+
                 listBoxTables.Items.Add(temp);
                 this.game.table_list.Add(new Table(temp));
             }
