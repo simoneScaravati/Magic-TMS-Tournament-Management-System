@@ -72,7 +72,9 @@
             // 
             // listBoxPlayers
             // 
+            this.listBoxPlayers.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.listBoxPlayers.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBoxPlayers.ForeColor = System.Drawing.Color.White;
             this.listBoxPlayers.FormattingEnabled = true;
             this.listBoxPlayers.HorizontalScrollbar = true;
             this.listBoxPlayers.ItemHeight = 21;
@@ -87,7 +89,7 @@
             // 
             this.labelPlayers.AutoSize = true;
             this.labelPlayers.BackColor = System.Drawing.Color.Transparent;
-            this.labelPlayers.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelPlayers.ForeColor = System.Drawing.Color.White;
             this.labelPlayers.Location = new System.Drawing.Point(13, 45);
             this.labelPlayers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPlayers.Name = "labelPlayers";
@@ -100,7 +102,7 @@
             // 
             this.labelTables.AutoSize = true;
             this.labelTables.BackColor = System.Drawing.Color.Transparent;
-            this.labelTables.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelTables.ForeColor = System.Drawing.Color.White;
             this.labelTables.Location = new System.Drawing.Point(265, 45);
             this.labelTables.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTables.Name = "labelTables";
@@ -110,7 +112,9 @@
             // 
             // listBoxTables
             // 
+            this.listBoxTables.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.listBoxTables.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBoxTables.ForeColor = System.Drawing.Color.White;
             this.listBoxTables.FormattingEnabled = true;
             this.listBoxTables.HorizontalScrollbar = true;
             this.listBoxTables.ItemHeight = 21;
@@ -124,6 +128,7 @@
             // 
             this.dataGridViewRanking.AllowUserToAddRows = false;
             this.dataGridViewRanking.AllowUserToDeleteRows = false;
+            this.dataGridViewRanking.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewRanking.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewRanking.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridViewRanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -270,6 +275,7 @@
             // 
             this.dataGridViewMatching.AllowUserToAddRows = false;
             this.dataGridViewMatching.AllowUserToDeleteRows = false;
+            this.dataGridViewMatching.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewMatching.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMatching.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerAssign,
@@ -317,8 +323,8 @@
             this.labelRound.AutoSize = true;
             this.labelRound.BackColor = System.Drawing.Color.Transparent;
             this.labelRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelRound.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelRound.Location = new System.Drawing.Point(646, 50);
+            this.labelRound.ForeColor = System.Drawing.Color.White;
+            this.labelRound.Location = new System.Drawing.Point(621, 50);
             this.labelRound.Name = "labelRound";
             this.labelRound.Size = new System.Drawing.Size(180, 28);
             this.labelRound.TabIndex = 16;
@@ -330,7 +336,7 @@
             this.labelCurrentRound.AutoSize = true;
             this.labelCurrentRound.BackColor = System.Drawing.Color.Transparent;
             this.labelCurrentRound.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCurrentRound.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelCurrentRound.ForeColor = System.Drawing.Color.White;
             this.labelCurrentRound.Location = new System.Drawing.Point(832, 50);
             this.labelCurrentRound.Name = "labelCurrentRound";
             this.labelCurrentRound.Size = new System.Drawing.Size(48, 28);
@@ -340,7 +346,7 @@
             // buttonNextRound
             // 
             this.buttonNextRound.BackColor = System.Drawing.Color.Transparent;
-            this.buttonNextRound.Location = new System.Drawing.Point(915, 45);
+            this.buttonNextRound.Location = new System.Drawing.Point(937, 45);
             this.buttonNextRound.Name = "buttonNextRound";
             this.buttonNextRound.Size = new System.Drawing.Size(201, 44);
             this.buttonNextRound.TabIndex = 18;
@@ -426,7 +432,7 @@
             this.labelScore.AutoSize = true;
             this.labelScore.BackColor = System.Drawing.Color.Transparent;
             this.labelScore.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelScore.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelScore.ForeColor = System.Drawing.Color.White;
             this.labelScore.Location = new System.Drawing.Point(42, 510);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(73, 21);
@@ -437,7 +443,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(64)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1201, 806);
