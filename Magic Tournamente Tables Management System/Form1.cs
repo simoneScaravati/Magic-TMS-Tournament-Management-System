@@ -68,16 +68,54 @@ namespace Magic_Tournamente_Tables_Management_System
                 return;
             }
 
-            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
+            if (this.game.game_started)
+            {
+                //if game already started, remove player from matching grid (also ranking?)
+                String searchValue = listBoxPlayers.SelectedItem.ToString()!;
+                foreach (DataGridViewRow row in dataGridViewMatching.Rows)
+                {
+                    if (row.Cells["PlayerAssign"].Value.Equals(searchValue))
+                    {
+                        dataGridViewMatching.Rows.Remove(row);
+                        dataGridViewMatching.Refresh();
+                        break;
+                    }
+                }
+
+                foreach (DataGridViewRow row in dataGridViewRanking.Rows)
+                {
+                    if (row.Cells["Player"].Value.Equals(searchValue))
+                    {
+                        dataGridViewRanking.Rows.Remove(row);
+                        dataGridViewRanking.Refresh();
+                        break;
+                    }
+                }
+
+                UpdateGameTotalTables();
+
+            }
+
+            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString()); 
             listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
             listBoxPlayers.Refresh();
+
         }
 
         private void buttonRemoveAllPlayer_Click(object sender, EventArgs e)
         {
-            this.game.player_list.Clear();
-            listBoxPlayers.Items.Clear();
-            listBoxPlayers.Refresh();
+            if (!this.game.game_started)
+            {
+                this.game.player_list.Clear();
+                listBoxPlayers.Items.Clear();
+                listBoxPlayers.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Can't remove all player after game start!\nPlease restart the game or remove single player");
+            }
+
+            
         }
 
 
@@ -114,16 +152,32 @@ namespace Magic_Tournamente_Tables_Management_System
                 return;
             }
 
-            this.game.table_list.RemoveAll(t => t.id == listBoxTables.SelectedItem.ToString()); //warning: could be more with the same name (stupid thing)
-            listBoxTables.Items.Remove(listBoxTables.SelectedItem);
-            listBoxTables.Refresh();
+            if(!this.game.game_started)
+            {
+                this.game.table_list.RemoveAll(t => t.id == listBoxTables.SelectedItem.ToString());
+                listBoxTables.Items.Remove(listBoxTables.SelectedItem);
+                listBoxTables.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nnnnnope, game already started. \nPlease restart game");
+            }
+            
         }
 
         private void buttonRemoveAllTable_Click(object sender, EventArgs e)
         {
-            this.game.table_list.Clear();
-            listBoxTables.Items.Clear();
-            listBoxTables.Refresh();
+            if (!this.game.game_started)
+            {
+                this.game.table_list.Clear();
+                listBoxTables.Items.Clear();
+                listBoxTables.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Can't remove all tables after game start!\nPlease restart the game or remove single tables");
+            }
+
         }
 
 

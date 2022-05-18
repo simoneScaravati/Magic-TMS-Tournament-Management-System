@@ -208,9 +208,9 @@
             this.buttonRemovePlayer.BackColor = System.Drawing.Color.IndianRed;
             this.buttonRemovePlayer.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.buttonRemovePlayer.FlatAppearance.BorderSize = 10;
-            this.buttonRemovePlayer.Location = new System.Drawing.Point(91, 435);
+            this.buttonRemovePlayer.Location = new System.Drawing.Point(106, 435);
             this.buttonRemovePlayer.Name = "buttonRemovePlayer";
-            this.buttonRemovePlayer.Size = new System.Drawing.Size(148, 63);
+            this.buttonRemovePlayer.Size = new System.Drawing.Size(133, 63);
             this.buttonRemovePlayer.TabIndex = 8;
             this.buttonRemovePlayer.Text = "Remove Player";
             this.buttonRemovePlayer.UseVisualStyleBackColor = false;
@@ -254,7 +254,7 @@
             this.buttonRemoveAllPlayer.BackColor = System.Drawing.Color.IndianRed;
             this.buttonRemoveAllPlayer.Location = new System.Drawing.Point(12, 435);
             this.buttonRemoveAllPlayer.Name = "buttonRemoveAllPlayer";
-            this.buttonRemoveAllPlayer.Size = new System.Drawing.Size(73, 63);
+            this.buttonRemoveAllPlayer.Size = new System.Drawing.Size(88, 63);
             this.buttonRemoveAllPlayer.TabIndex = 12;
             this.buttonRemoveAllPlayer.Text = "Remove All";
             this.buttonRemoveAllPlayer.UseVisualStyleBackColor = false;
