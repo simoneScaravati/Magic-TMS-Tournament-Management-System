@@ -68,10 +68,16 @@ namespace Magic_Tournamente_Tables_Management_System
                 return;
             }
 
+            String searchValue = listBoxPlayers.SelectedItem.ToString()!;
+
+            this.game.player_list.RemoveAll(p => p.name == searchValue);
+            listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
+            listBoxPlayers.Refresh();
+
             if (this.game.game_started)
             {
                 //if game already started, remove player from matching grid (and ranking)
-                String searchValue = listBoxPlayers.SelectedItem.ToString()!;
+
                 foreach (DataGridViewRow row in dataGridViewMatching.Rows)
                 {
                     if (row.Cells["PlayerAssign"].Value.Equals(searchValue))
@@ -100,10 +106,6 @@ namespace Magic_Tournamente_Tables_Management_System
                 UpdateMatchingGridView();
 
             }
-
-            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString());
-            listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
-            listBoxPlayers.Refresh();
 
         }
 
