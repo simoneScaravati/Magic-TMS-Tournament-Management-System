@@ -70,7 +70,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
             if (this.game.game_started)
             {
-                //if game already started, remove player from matching grid (also ranking?)
+                //if game already started, remove player from matching grid (and ranking)
                 String searchValue = listBoxPlayers.SelectedItem.ToString()!;
                 foreach (DataGridViewRow row in dataGridViewMatching.Rows)
                 {
@@ -94,9 +94,14 @@ namespace Magic_Tournamente_Tables_Management_System
 
                 UpdateGameTotalTables();
 
+                //TODO Refresh matching datagridview actual matching
+                MiddleRoundMixPlayer();
+
+                UpdateMatchingGridView();
+
             }
 
-            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString()); 
+            this.game.player_list.RemoveAll(p => p.name == listBoxPlayers.SelectedItem.ToString());
             listBoxPlayers.Items.Remove(listBoxPlayers.SelectedItem);
             listBoxPlayers.Refresh();
 
@@ -115,7 +120,7 @@ namespace Magic_Tournamente_Tables_Management_System
                 MessageBox.Show("Can't remove all player after game start!\nPlease restart the game or remove single player");
             }
 
-            
+
         }
 
 
@@ -152,7 +157,7 @@ namespace Magic_Tournamente_Tables_Management_System
                 return;
             }
 
-            if(!this.game.game_started)
+            if (!this.game.game_started)
             {
                 this.game.table_list.RemoveAll(t => t.id == listBoxTables.SelectedItem.ToString());
                 listBoxTables.Items.Remove(listBoxTables.SelectedItem);
@@ -162,7 +167,7 @@ namespace Magic_Tournamente_Tables_Management_System
             {
                 MessageBox.Show("Nnnnnope, game already started. \nPlease restart game");
             }
-            
+
         }
 
         private void buttonRemoveAllTable_Click(object sender, EventArgs e)
@@ -325,6 +330,10 @@ namespace Magic_Tournamente_Tables_Management_System
             DialogResult dialogResult = MessageBox.Show("Are you sure to continue to next round?", "Warning Next Round", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                /* update ranking grid */
+                UpdateRanking();
+
+
                 if (this.game.current_round == 0)
                 {
                     //first round
@@ -382,124 +391,118 @@ namespace Magic_Tournamente_Tables_Management_System
                 }
                 else
                 {
-                    //middle rounds
-                    int retry_sampling = this.game.player_list.Count;
-                    bool buy_assignment_ok = false;
-
-                    List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list once
-                    ShufflePlayers(listCopy); //randomize it --> in retry loop we will shift that
-                    List<Player> listCopyBackup = new List<Player>(listCopy); //keep the first randomized list
-
-
-                    for (int k = 0; k < retry_sampling; k++)
-                    {
-                        listCopy.Clear();
-                        listCopy = new List<Player>(listCopyBackup);
-                        listCopyBackup = RotateList(listCopyBackup); //rotate list for next iteration
-
-                        int n = listCopy.Count;
-                        int table_counter = 0;
-
-                        //clear every player list of tables each round
-                        foreach (Table table in this.game.table_list)
-                        {
-                            table.players.Clear();
-                        }
-
-                        List<Table> t = this.game.table_list; //pointer for refactoring
-                        UpdateGameTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
-                        while (table_counter < this.game.total_tables)
-                        {
-                            if (n >= Game.PLAYERS_PER_TABLE)
-                            {
-                                for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
-                                {
-                                    t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
-                                    listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
-                                }
-
-                                n -= Game.PLAYERS_PER_TABLE;
-                                table_counter++;
-
-                            }
-                            if (n == Game.EXTRA_TABLE_PLAYERS)
-                            {
-                                for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
-                                {
-                                    t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
-                                    listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
-                                }
-
-                                n -= Game.EXTRA_TABLE_PLAYERS;
-                                table_counter++;
-                            }
-
-                        }
-
-                        bool has_buy = false;
-
-                        //buy counters --> check in middle rounds if someone had already buy points (retry)
-                        foreach (Player p in listCopy)
-                        {
-                            //every remaining players has already a buy?
-                            if (p.won_buy_count >= Game.FIRST_MAX_BUY_THRESHOLD)
-                            {
-                                has_buy = true;
-                                break;
-                            }
-                        }
-
-                        if (has_buy == false) //if nobody has buy, it's ok, assign that
-                        {
-                            foreach (Player p in listCopy)
-                            {
-                                int i = this.game.player_list.FindIndex(x => x.name == p.name);
-                                this.game.player_list[i].won_buy_count++;
-                                this.game.player_list[i].score += Game.BUY_POINTS;
-                            }
-
-                            buy_assignment_ok = true;
-                            break; //exit for loop
-                        }
-                        //else --> retry loop
-
-                    }
-
-
-                    //if every player has a buy point, then accept a second buy point
-                    if (buy_assignment_ok == false)
-                    {
-                        //TODO
-                    }
-
+                    MiddleRoundMixPlayer();
 
                 }
 
-
-                /* update ranking grid */
-                if (this.game.current_round != 0)
-                {
-                    UpdateRanking();
-                }
 
                 if (this.game.current_round != this.game.total_rounds)
                 {
                     /*update matching datagrid matching --> check before if matching is ok*/
-                    UpdateMatching();
+                    UpdateMatchingGridView();
 
                     this.game.current_round++;
                     UpdateRoundsText();
                 }
 
-                if (this.game.current_round == 1)
-                {
-                    UpdateRanking();
-                }
 
 
             }
 
 
+        }
+
+        private void MiddleRoundMixPlayer()
+        {
+            //middle rounds
+            int retry_sampling = this.game.player_list.Count;
+            bool buy_assignment_ok = false;
+
+            List<Player> listCopy = new List<Player>(this.game.player_list); //create a copy of player list once
+            ShufflePlayers(listCopy); //randomize it --> in retry loop we will shift that
+            List<Player> listCopyBackup = new List<Player>(listCopy); //keep the first randomized list
+
+
+            for (int k = 0; k < retry_sampling; k++)
+            {
+                listCopy.Clear();
+                listCopy = new List<Player>(listCopyBackup);
+                listCopyBackup = RotateList(listCopyBackup); //rotate list for next iteration
+
+                int n = listCopy.Count;
+                int table_counter = 0;
+
+                //clear every player list of tables each round
+                foreach (Table table in this.game.table_list)
+                {
+                    table.players.Clear();
+                }
+
+                List<Table> t = this.game.table_list; //pointer for refactoring
+                UpdateGameTotalTables(); //check if this.game.total_tables is the same --> number of player changes is not a problem
+                while (table_counter < this.game.total_tables)
+                {
+                    if (n >= Game.PLAYERS_PER_TABLE)
+                    {
+                        for (int i = 0; i < Game.PLAYERS_PER_TABLE; i++)
+                        {
+                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                        }
+
+                        n -= Game.PLAYERS_PER_TABLE;
+                        table_counter++;
+
+                    }
+                    if (n == Game.EXTRA_TABLE_PLAYERS)
+                    {
+                        for (int i = 0; i < Game.EXTRA_TABLE_PLAYERS; i++)
+                        {
+                            t[table_counter].players.Add(listCopy[listCopy.Count - 1]); //select last
+                            listCopy.RemoveAt(listCopy.Count - 1); //remove player from random copy list (last index)
+                        }
+
+                        n -= Game.EXTRA_TABLE_PLAYERS;
+                        table_counter++;
+                    }
+
+                }
+
+                bool has_buy = false;
+
+                //buy counters --> check in middle rounds if someone had already buy points (retry)
+                foreach (Player p in listCopy)
+                {
+                    //every remaining players has already a buy?
+                    if (p.won_buy_count >= Game.FIRST_MAX_BUY_THRESHOLD)
+                    {
+                        has_buy = true;
+                        break;
+                    }
+                }
+
+                if (has_buy == false) //if nobody has buy, it's ok, assign that
+                {
+                    foreach (Player p in listCopy)
+                    {
+                        int i = this.game.player_list.FindIndex(x => x.name == p.name);
+                        this.game.player_list[i].won_buy_count++;
+                        this.game.player_list[i].score += Game.BUY_POINTS;
+                    }
+
+                    buy_assignment_ok = true;
+                    break; //exit for loop
+                }
+                //else --> retry loop
+
+            }
+
+
+            //if every player has a buy point, then accept a second buy point
+            if (buy_assignment_ok == false)
+            {
+                //TODO
+            }
         }
 
         private List<Player> RotateList(List<Player> listCopy)
@@ -591,7 +594,7 @@ namespace Magic_Tournamente_Tables_Management_System
 
         }
 
-        private void UpdateMatching()
+        private void UpdateMatchingGridView()
         {
             dataGridViewMatching.Rows.Clear();
             dataGridViewMatching.Refresh();
