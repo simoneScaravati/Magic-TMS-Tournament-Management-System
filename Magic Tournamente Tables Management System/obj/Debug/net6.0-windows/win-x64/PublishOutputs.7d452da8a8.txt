@@ -1,0 +1,7 @@
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\Magic Tournamente Tables Management System.pdb
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\D3DCompiler_47_cor3.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\PenImc_cor3.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\PresentationNative_cor3.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\vcruntime140_cor3.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\wpfgfx_cor3.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\publish\win-x64\Magic Tournamente Tables Management System.exe

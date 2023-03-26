@@ -1,0 +1,22 @@
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic TMS - Tournament Management System.exe
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic TMS - Tournament Management System.deps.json
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic TMS - Tournament Management System.runtimeconfig.json
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic TMS - Tournament Management System.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Magic TMS - Tournament Management System.pdb
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.csproj.AssemblyReference.cache
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic_Tournamente_Tables_Management_System.Form1.resources
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic_Tournamente_Tables_Management_System.FormInfo.resources
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic_Tournamente_Tables_Management_System.FormNewGame.resources
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic_Tournamente_Tables_Management_System.Properties.Resources.resources
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.csproj.GenerateResource.cache
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.GeneratedMSBuildEditorConfig.editorconfig
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.AssemblyInfoInputs.cache
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.AssemblyInfo.cs
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.csproj.CoreCompileInputs.cache
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.csproj.CopyComplete
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\refint\Magic TMS - Tournament Management System.dll
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.pdb
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\Magic TMS - Tournament Management System.genruntimeconfig.cache
+D:\Falcy\magic-tournament-tables-management-system\Magic Tournamente Tables Management System\obj\Debug\net6.0-windows\ref\Magic TMS - Tournament Management System.dll

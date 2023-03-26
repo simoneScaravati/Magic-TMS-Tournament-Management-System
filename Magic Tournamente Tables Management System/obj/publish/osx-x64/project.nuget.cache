@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "qIRkQp0oKHOwyUxQ1t6oc2J6D2yWkQacVXiOyYB0iNVyNRCZd5GKiSidkCpX2HLtNdGnmuxBOjTU8zpQl0y9bw==",
+  "success": true,
+  "projectFilePath": "D:\\Falcy\\magic-tournament-tables-management-system\\Magic Tournamente Tables Management System\\Magic Tournamente Tables Management System.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\simon\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\simon\\.nuget\\packages\\microsoft.netcore.app.runtime.osx-x64\\6.0.4\\microsoft.netcore.app.runtime.osx-x64.6.0.4.nupkg.sha512",
+    "C:\\Users\\simon\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.osx-x64\\6.0.4\\microsoft.aspnetcore.app.runtime.osx-x64.6.0.4.nupkg.sha512",
+    "C:\\Users\\simon\\.nuget\\packages\\microsoft.netcore.app.host.osx-x64\\6.0.4\\microsoft.netcore.app.host.osx-x64.6.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
